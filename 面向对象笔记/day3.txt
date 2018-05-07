@@ -1,0 +1,173 @@
+﻿1. 复习
+	-> 继承
+		原型式继承
+			function Person() {}
+			Person.prototype = 父对象;
+			var p = new Person();
+			p 继承自 父对象
+		混入 ( mix, extend )
+			function extend( o1, o2 ) {
+				for ( var k in o2 ) {
+					o1[ k ] = o2[ k ];
+				}
+			}
+		注意命名规则: 
+			1> 一般 将一个对象混入另一个对象, 使用 mix
+			2> 如果是当前对象的方法. 是将另一个对象混入当前对象一般使用 extend
+
+2. 对象的原型链
+	-> 凡是对象都有原型
+	-> 构造函数 Person 创建的对象 p 有原型 Person.prototype
+
+	-> Person.prototype 是对象. 它有原型吗?
+	-> 问题: 
+		1) 原型是什么?
+		2) 原型既然是对象, 那么如何是个头?	
+
+	-> 结论
+		1) Person.prototype 是 实例 p 的原型对象, 使用 __proto__ 可以访问对象的原型对象
+		2) Person.prototype 的 原型对象是 Person.prototype.__proto__
+		3) Person.prototype.__proto__ 里的 constructor 是 Object. 所以
+			Person.prototype.__proto__   就是 Object.prototype
+		4) Object.prototype.__proto__ 是 null. 因此表明 Object.prototype 就是顶级.
+
+
+               原型：Person.prototype.__proto_
+               构造函数：Object
+               实例对象：Person.prototype
+               
+
+
+	-> 链式
+		p --> Person.prototype( p.__proto__ ) --> Object.prototype --> null
+
+	-> 系统内置的原型链
+		[] --> Array.prototype --> Object.prototype --> null
+		/./ --> RegExp.prototype --> Object.prototype --> null 
+		... ...
+
+3. 绘制数组的原型结构
+	var arr = [];
+	// 等价
+	var arr = new Array();
+
+	arr --> Array.prototype --> Object.prototype --> null
+
+4. 练习:
+	根据下面代码绘制对象的原型链结构
+	1) 	function Person( name, age, gender ) {
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+		}
+		function Student () {}
+
+		Student.prototype = new Person( '张三', 19, '男' );
+
+		var stu = new Student();
+
+	2)  function Person() {}
+		var p1 = new Person();
+		var p2 = new Person();
+
+5. {} 对象的原型链结构
+	在 js 中 对象 一般都有字面量
+		123, '123'
+	数组: []
+	正则表达式对象: /./
+	函数: function () {}
+	...
+
+	对象也有字面量: {}
+	{} --> Object.prototype --> null
+
+	注意: {} 与 new Object() 含义相同 
+
+
+6. 动态函数 Function
+	-> 动态函数就是在运行的过程中, 将一段字符串作为代码运行. 
+		由于字符串可以随意的拼接. 因此得到动态的执行.
+	-> 定义动态函数, 并执行
+		-> 使用 Function 构造函数, 创建函数.
+			Function 是一个构造函数. new Function 得到 一个函数
+		-> 语法
+			new Function( arg0, arg1, ..., argN, body )
+
+			Function 的所有的参数, 除了最后一个以外, 都是生成的函数的参数
+			最后一个参数是 函数体
+
+7. 函数的相关的一些参数
+	arguments 凡是函数调用, 都会默认含有一个 arguments 对象. 可以将其看做为 "数组". 里面存储着调用时
+		传入的所有参数. 可以使用数组的索引访问这些参数.
+		例如: 写一个函数, 在参数中写任意个参数, 最后求其和
+			function sum () {
+				// 所有的参数都会存储到 arguments 中
+				var sum = 0;
+				for ( var i = 0; i < arguments.length; i++ ) {
+					sum += arguments[ i ];
+				}
+				return sum;
+			}
+
+		案例: 	extend( o )  => 将 o 混入到当前对象 this 中
+				extend( o1, o2 ) => 将 o2 混入到 o1 中
+
+	函数名.length, 即函数的 length 属性. 表示 定义函数时, 参数的个数
+
+	如果定义函数的时候, 定义了参数. 但是调用的时候又没有传递该参数. 那么该参数在函数内就是 undefined
+
+	函数.name 返回的是函数名
+
+8. 函数的引用 callee 与 caller
+	js 中函数也是一个对象
+	-> callee 在函数的内部, 它表示 当前函数 的引用
+	-> caller 表示调用函数的
+
+9. eval 函数
+	eval 函数与 Function 功能类似. eval 可以直接将字符串作为代码来执行.
+	语法:
+		eval( 语句字符串 )
+	注意, 它好像与当前代码处于同一个作用域
+
+10. 使用 ajax 获得 json 格式的字符串后, 转换成对象
+	
+11. 在 js 中 函数 是 Function 的实例
+
+	function Person() {}
+	var p = new Person();
+	p 是 构造函数 Person 的实例
+
+	在 该角度去看, 函数就是对象, Function 就是构造函数
+
+	得到 构造-实例-原型 三角形
+
+	function Person() {} 为例
+
+12. 给定一个任意的对象, 将其原型链包括对象和函数的结构完整的分析处理
+
+13. instanceof 运算符
+	-> a of b -> b 的 a
+	-> instance of ?
+	-> 错觉: 判断某一个对象是否为某一个构造函数所创建出来的
+
+
+14. 通过原型链的学习, 可以重新定义 js 的继承
+
+	js 的继承: 就是利用对象的动态特性添加成员, 或直接替换对象的方式修改原型链
+				结构. 使得当前对象的原型链上的对象具有某些成员. 那么我的当前对象
+				就可以使用这些成员了.
+
+	p -> Person.prototype -> Object.prototype -> null
+	p -> Person.prototype -> {} -> Object.prototype -> null
+
+	过多的依赖原型链继承, 会损耗 性能
+	如果必须使用原型链继承, 最好提供一些快速访问的方法
+
+
+
+
+
+
+
+
+

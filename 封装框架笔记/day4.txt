@@ -1,0 +1,536 @@
+1. 框架整体介绍
+    -> 框架和库是什么
+        库: 仓库, 表示的是很多为了实现特殊功能而封装的, 便于使用开发的 函数, 对象 和 常量等.
+            例如:
+            // 在 dom 元素下, 获得 复合 tagName 的元素, 
+            // 如果不提供 dom 参数, 那么就是默认 document
+            function getTag( tagName, dom ) {
+                dom = dom || document;
+                return dom.getElementsByTagName( tagName );
+            }
+
+            getTag( 'div', dv );
+
+            在开发过程中为了实现更加方便的使用, 封装这些方法, 然后组合到一起以供使用, 这样就构成了库.
+
+        框架: 是一套完整的开发解决方案. 框架一般提供了一些方便的开发格式与方法, 我们只需要按照他的格式
+            使用即可, 不需要关注一些具体的实现.
+
+
+    -> 为什么学习框架封装
+        1> 强化原生 js 代码
+        2> 培养编程的思想与积累代码结构
+        3> 提高对 jq 框架的理解
+        4> 强化 js 高级中涉及的理论内容
+    -> 学习建议
+        -> 查漏补缺
+            入门一门语言有 4 条经验: 1> 语法关键字通关; 2> 字符串操作; 3> 集合操作( 数组, 键值对 ); 4> 学会文件操作.
+
+            url: http://www.123.com/index.php?a=b&c=d
+
+            解析: 协议, 路径, 域名, 参数, ...
+
+        -> 多思考, 多练习, 多转换思想
+        
+
+2. 选择模块
+    -> 问题引入
+        传统编码的问题:
+            1> 获得元素方法名太长, 出现错误的几率变大.
+            2> 有重复代码的嫌疑, 获得元素重复, 循环遍历增加样式重复
+        问题可以再优化, 数组带有 forEach 方法
+
+    -> 选择函数
+    -> map 与 forEach 方法
+        -> ES5 中给数组扩展了一些用于遍历数组元素的方法
+            map
+            forEach
+            some
+            every
+        -> map 映射
+            将一个( 一组 )数据按照一定的规则, 转为另一个( 一组 )数据, 这个就是映射
+            在 js 中就是由 一个数组 得到另一个数组
+            var arr = [ 1,2,3 ]; // => 规则 元素扩大一倍
+
+            语法:
+                数组.map(function ( v, i ) {
+                    // 对每一个元素进行处理
+                    // 返回一个数据
+                });
+        -> forEach
+            就是在遍历一个数组. forEach 在内部会遍历数组中的每一个元素. 因此我们只需要提供如何操作
+            元素即可, 也就是说提供一个处理函数, forEach 在遍历每一个元素的时候就会调用该函数.
+
+            语法:
+                数组.forEach( function ( v, i ) {
+                    // 写上如何处理第 i 个元素即可
+                });
+        -> some 与 every
+            some 表示只要存在即可, 相当于逻辑或运算
+            every 表示每一个都要, 相当于逻辑与运算
+
+            着两个方法是专门用来判断数组中元素的
+
+            语法:
+                数组.方法名(functiuon ( v, i ) {
+                    // 需要返回一个 boolean 值, 
+                    // 用于表示对数组中该元素的判断
+                });
+            如果是 every 方法, 必须保证数组中每一个元素都返回 true, 那么 every 方法才会返回 true. 
+            如果是 some 方法, 表示只要有一个为 true, 那么这个 some 方法的返回值就是 true.
+            
+
+
+    -> each 与 map 方法
+        案例:
+            var data = [
+                { name: 'jim1', age: 19, gender: 'male' },
+                { name: 'jim2', age: 18, gender: 'female' },
+                { name: 'jim3', age: 20, gender: 'female' },
+                { name: 'jim4', age: 21, gender: 'male' },
+                { name: 'jim5', age: 19, gender: 'female' },
+                { name: 'jim6', age: 18, gender: 'male' }
+            ];
+
+        1> jq 中的 each 与 map
+            ES5 中 forEach 方法的语法
+                <数组>.forEach( function ( v, i ) {
+                    // 回调函数会处理每一个数组元素
+                    // 如果是需要跳出循环, 没有相关语句
+                });
+            jq 中 each 方法
+                $.each( 数组|对象|伪数组, function ( i, v ) {
+                    // 使用回调函数处理每一项
+                    // 如果想要跳出循环, 就可以使用 return false
+                });
+            
+            ES5 中 map 方法的语法
+                <数组>.map( function ( v, i ) {
+                    // 处理每一个元素
+                    // 如果不返回任何数据, 相当于 返回 undefined. 
+                    // 必须返回数据
+                });
+            jq 中 map
+                $.map( 数组|对象|伪数组, function ( v, i ) {
+                    // 处理每一个数据
+                    // 如果不返回数据, 那么就是没有数据
+                });
+            
+            在 ES5 中的方法, 不能使用 this 都是代表 window
+            而在 jq 中, each 方法中的 this 表示当前项, 即与 v 相同.
+            不过 jq 中, map 方法依旧不能使用 this.
+
+
+        2> 封装自己的 each 与 map
+            由于 需要首先 实现数组的判定方法, 因此可以先定义一个 isArrayLike
+            在该方法中 判断数组与伪数组
+            -> 数据按照顺序一一存储
+                var arr = [];
+                arr[ 3 ] = 1; // 稀疏数组
+            -> 可以使用 length 获得总长
+                只需要满足 length 的属性即可
+                -> 必须是数字
+                -> >= 0
+            
+            封装 each 函数
+            -> 首先看是不是 数组
+            -> 如果是数组使用 for 循环遍历
+            -> 如果不是则使用 for-in 循环
+
+
+    -> 选择函数封装
+        假定我们提供 itcast 函数, 来完成选择工作
+        itcast( 'div > input' ).each( function () {
+            this.XXX
+        })
+
+        可以由两种方案
+        1> 封装对象
+            function itcast ( selector ) {
+                var list = document.querySelectorAll( selector );
+
+                retrun {
+                    list: list,
+                    each: function () ...
+                    map: fucntion () ...
+                    ... ...
+                }
+            } 
+
+        2> 封装伪数组
+            function itcast( selector ) {
+                var arr = { length: 0 };
+                // 获取元素
+                var list = document.querySelectorAll( selector );
+
+                // 将 list 中的元素加入到 arr 中
+                [].push.apply( arr, list );
+
+                // 增加方法
+                arr.each = function ( callback ) {
+                    each( arr, callback );
+                };
+                return arr;
+            }
+
+
+    -> jq 对象本质
+
+3. 框架核心结构
+    -> 核心结构
+        1> 带有 new 构造函数的形式
+            目标: 
+            -> 定义 Itcast 构造函数
+            -> 利用构造函数创建对象, 即获得页面中的元素( 即, 参数就是选择器 )
+            -> 对象应该是一个伪数组, 里面存储着所有的获得到的 DOM 元素
+            -> 该对象还需要提供方法, 方法存储到原型中
+    
+            优点:
+                -> 代码结构紧凑, 不易出错, 书写少很多
+                -> 含有隐式迭代, 写起来简单
+            缺点:
+                -> new 关键字可以考虑消化掉
+                -> 隐式迭代太少, 可以考虑可扩展性
+                -> 链式编程需要强化
+
+
+        2> 隐藏 new 关键字
+            因此只出需要提供工厂函数, 就可以在不写 new 的情况下, 创建 对象了.
+            function I( selector ) {
+                return new Itcast( selector );
+            }
+
+            在实际开发中, 常常为了避免全局污染. 会将所有的代码全部放到一个沙箱中.
+            因此需要全局暴露, 一个就是 I 这个函数, 另一个就是 Itcast.
+            1> 将 I 暴露是因为开发的需要, 使用 I 表示与 jquery 中 $ 一致的功能
+            2> 将 Itcast 暴露出去是因为需要为 Itcast 对象 提供 扩展性.
+
+        3> 完成框架结构( 初步结构 )
+            获得元素使用语法: I( 'div' )
+            提供方法使用语法: I.Itcast.prototype.XXX = VVV;
+
+            function I( selector ) {
+                return new Itcast( selector );
+            }
+
+            将构造函数作为 I 这个函数的原型上的一个成员
+            function I( selector ) {
+                return new Itcast( selector );
+            }
+            I.prototype = {
+                Itcast: Itcast ( selector ) {
+                    // ...
+                }
+            }
+            目的: 是要可以方便的 给 I.prototype.Itcast 这个构造函数 的 prototype 属性添加成员
+            将 I.prototype.Itcast 的 原型 与 I 这个函数的原型变成同一个对象
+
+            function I( selector ) {
+                return new Itcast( selector );
+            }
+            I.prototype = {
+                Itcast: Itcast ( selector ) {
+                    // ...
+                }
+            }
+            I.prototype.Itcast.prototype = I.prototype;
+
+            如果给 I.prototype 添加成员, 就是在 给 I.prototype.Itcast.prototype 添加成员
+
+            实际上给实例对象添加的成员是方法, 所以 jquery 给原型增加了一个名字 fn
+
+            function I( selector ) {
+                return new I.fn.Itcast( selector );
+            }
+            I.fn = I.prototype = {
+                Itcast: Itcast ( selector ) {
+                    // ...
+                }
+            };
+            I.fn.Itcast.prototype = I.fn;
+
+            如何要获得元素: I( 'div' )
+            如果要增加方法: I.fn.XXX = VVV;
+
+        4> 完成框架的核心结构
+            -> 如果将 两个变量映射到全局
+                在 jq 中可以使用 $, 也可以使用 jQuery 构造函数
+            -> 优化代码
+                将数组抽取出来, 使用数组方法的时候不要再每次都创建数组对象
+                引入 参数 window
+                (function ( w ) {
+                    // ...
+                    w.document.getElementsByTagName( 'div' )
+                    w.I = window.Itcast = Itcast;
+                })( window )
+
+               
+
+
+    -> 核心方法
+        1> map 与 each
+        2> toArray
+            转化成数组. jq 本质就是伪数组. 即将 jq 这个伪数组转换成真正的数组.
+            语法:
+                $( '...' ).toArray()
+        3> get
+            使用 get 有两种用法
+            -> 不带有任何参数的, 将 jq 这个伪数组, 转换成真正的数组来使用
+            -> 带有一个数字型参数. 即索引, 表示返回这个 伪数组中 对应位置的 元素. 如果索引为负数, 即从后往前来获取元素, -1 表示最后一个元素.
+            语法:
+                $( '...' ).get( ??? )
+    -> extend 方法
+        原意: 扩展, 也就是给 jquery 对象扩展静态或实例方法的
+        无论是给 构造函数增加静态方法, 还是给 实例对象提供原型方法, 都有一个共同的特征
+        给对象添加方法. 
+
+        extend 就是将外来的 对象中提供的成员 增加到 this 中
+        
+
+
+4. DOM 操作
+    实际上, 在 DOM 操作中使用的最多的是 增加数据( 增加 DOM 节点 ), 删除数据( 删除节点等 ),
+    修改数据( 修改属性, 修改样式 ), 查询( 获得元素, 找寻节点对象 ).
+
+    -> parseHTML 方法
+        传统与 jq 中创建标签的办法
+        1) document.createElement( 'div' )
+        2) $( '<div></div>' )
+
+        现在需要提供一个字符串, 然后将其转换成 HTML 标签( DOM 对象 )
+        1> 如何判断用户输入的是标签格式的字符串
+            思考: 选择器的字符串结构与 HTML 字符串结构有何不同???
+            在 HTML 中必须有 尖括号, 而且一定在两端
+            但是选择器中, 尖括号只会出现在选择器中间, 表示子代元素
+
+            if ( str.charAt( 0 ) === '<' && str.charAt( str.length - 1 ) === '>' ) 
+            这就是说明了 它是一个 html 格式的字符串
+        2> 如何解析这个字符串???
+            -> 字符串解析( 正则表达式 )
+                常用 html 格式有两种形态
+                1) 单标签形态: 例如 <br /> <input type="text"> 等
+                    这个标签满足格式 /<.+\/>/ 或者: /<\S+.*?\/>/
+                2) 复杂的标签形态: 例如: <div><img /></div>
+                    如果使用格式: /<(.+)>.*<\/\1>/
+                    无法处理: <div><div></div></div>
+            -> 将解析的工作交给 浏览器来完成
+                思考, 在 HTML 的方法中有没有一个 将 HTML 格式字符串转换为 DOM 的办法.
+                很显然, innerHTML
+
+        注意: 该方法使用 的是 div 作为容器, 因此在内部不能够直接创建 tr, td 等元素
+
+    -> 引入到框架中
+        1> 修改构造方法, 使得可以处理其他数据
+        2> 将 parseHTML 方法挂载到 构造函数上
+        3> 如何组织代码
+            今天的前端开发已经不再是以前的切切图就可以解决的了
+            现在的前端, 有大量的代码需要编写, 可以非常注重项目结构化.
+            因此需要将代码分解到不同的文件中.
+            按照功能进行分解: 核心模块, DOM 操作模块, 事件模块, 属性样式模块, 其他模块
+
+    -> 基本 DOM 方法
+        -> 什么是 DOM 操作
+            所谓的 DOM 操作就是在操作 DOM. 
+            1) 增加 DOM 元素
+                创建元素: $( ... )
+                加入:   $( ... ).appendTo( ... )
+                       $( ... ).append( ... )
+                       ...
+            2) 删除 DOM 元素
+                $( ... ).remove()
+            3) 修改 DOM 元素
+                所谓的修改就是 修改属性, 修改样式, 实际上将原有移除, 新加一个即可
+        -> appendTo
+            在 jq 中该方法的含义是 将 前面的 jq 对象中包含 DOM 元素, 全部加到 后面的 元素中
+            $( '<div>1</div>' ).appendTo( 'body' )
+            新建一个 div 标签, 然后将其追加到 body 中.
+            
+            关于 appendTo 的参数
+                $( ... ).appendTo( 'body' )        参数是一个选择器
+                $( ... ).appendTo( $( 'body' ) )   参数是一个 jq 对象
+                $( ... ).appendTo( document.body ) 参数是一个 dom 对象
+            转化: 如果一个函数可以传入三种参数, 而且这三种参数的处理逻辑不太相同
+            一般来说结构就可以写成
+                function xxx ( args ) {
+                    if ( typeof args == 'string' ) {
+                        ...
+                    } else if ( args.nodeType ) {
+                        ...
+                    } else if ( args 是 Itcast 对象 ) {
+                        ...
+                    }
+                } 
+            划归: 将一个问题转化成一个已经解决的问题
+                可以将所有的情况转化成 处理 数组的 模型中
+                1) 字符串 -> Itcast 对象 -> 数组
+                2) DOM 元素 -> Itcast 对象 -> 数组
+                3) Itcast 对象 -> 数组
+            
+            思考:  jq 中, $ 函数可以处理什么参数
+                $( '选择器' ), $( dom ), $( $( ... ) ), $( fn ), ...
+
+            如果 我们的 Itcast 构造函数可以将 各种数据 转化成 Itcast 对象( 即数组 )
+            
+            Itcast.fn.appendTo = function ( selector ) {
+                var iObj = Itcast( selector ); // 数组
+
+                return this.each(function () {
+
+                    for ( var i = 0; i < iObj.length; i++ ) {
+                        iObj[ i ].appendChild( i == iObj.length - 1 
+                                                    ? this 
+                                                    : this.cloneNode( true ) );
+                    }
+
+                }); 
+            };
+        -> 构造函数
+            在 jq 中 构造函数参数的用法
+            1) 允许传入选择: string
+            2) 允许传入 html 字符串: string
+            3) 允许传入 dom 元素: object, 如何判断??? nodeType 属性
+            4) 允许传入 jQuery 对象: object, 如何判断??? .constructor
+                在 jquery 中原型上有一个属性 selector, 该属性用于记录选择器.
+                jquery 使用的就是该属性来判断的.
+            5) 允许传入 函数: function 相当于 onload 事件.
+            6) 数组等
+        -> 考虑 返回值
+            每次需要 克隆 DOM 对象, 因此准备一个数组, 然后将数组加载完成以后生成一个新的 Itcast 对象即可
+
+
+        -> 记录下链破坏之前原来对象
+            iNewObj.prevObj = this
+            每次链破坏的时候, 都可以记录下来, 那么只要调用 end 方法就将原来的数据取出来即可
+        -> append
+        -> prepend
+        -> prependTo
+        -> insertAfter
+        -> insertBefore
+        -> after
+        -> before
+
+    -> 成员访问方法
+        就是在访问相关的元素( 访问亲属元素 )
+        -> .parent()
+        -> .prev()
+        -> .prevAll()
+        -> .next()
+        -> .nextAll()
+        -> .sblings()
+    -> 去除重复元素
+        在数组中去除重复元素
+        arr
+        var tmp = [];
+        for ( ... arr ... ) {
+            if ( !tmp.contains( arr[ i ] ) ) {
+                tmp.push( arr[ i ] );
+            }
+        }
+
+
+
+
+5. 事件模块与样式属性
+    -> 事件复习
+        -> 什么是事件
+            事件机制: 所谓的事件机制就是浏览器无时不刻在监视我们的行为, 但是浏览器不会做任何事情.
+                     当我们在触发某个行为的时候, 浏览器会检查我们时候已经注册了对应的事件处理函数,
+                     如果已经注册了事件处理函数, 那么浏览器就会调用对应的函数以响应我们的行为. 
+                     但是如果没有发现注册, 那么浏览器什么也不会处理. 
+                     这样的机制就是事件处理机制.
+            所谓的注册, 简单的说就是告知浏览器有一个函数, 或多个函数, 一旦触发事件浏览器就会依次调用函数.
+            事件处理函数.
+            触发事件.
+            用户事件. 事件名.
+        -> 如何使用代码注册事件
+            -> 可以使用什么事件
+                使用的最多的是鼠标事件与键盘事件
+                mousemove, mouseout, mouseover
+                click, mousedown, mouseup
+                keydown, keyup, keypress
+            -> 如何注册事件
+                1) 使用属性赋值
+                    btn.onclick = function () { ... }
+                2) 标准做法
+                    btn.addEventListener( 'click', function() { ... } )
+        -> 在 jq 中事件的使用方法
+            在 jq 中添加点击事件, 可以使用 
+                $( '...' ).on( 'click', function () { ... } )
+                $( '...' ).click( function () { ... })
+            
+
+    -> on 方法 与 off 方法
+        -> 首先考虑实现通用的 on 方法
+            语法: $obj.on( 事件名, 事件处理函数 )
+            功能: 给每一个 dom 元素都绑定对应的事件处理函数 
+            实现: 遍历 然后给每一个元素都增加 事件
+        -> 移除事件, 使用 removeEventListener
+            语法: $obj.off( 事件名, 事件处理函数 )
+            
+    -> 其他事件
+        click
+        Itcast.fn[ 'click' ] = function ( callback ) {
+            return this.on( 'click', callback );
+        };
+
+        mouseover
+        Itcast.fn[ 'mouseover' ] = function ( callback ) {
+            return this.on( 'mouseover', callback );
+        };
+        
+
+        'click,mouseover,mousedown'.split( ',' ).forEach(function ( v ) {
+            Itcast.fn[ v ] = function ( callback ) {
+                return this.on( v, callback );
+            };
+        });
+
+        可以使用什么事件:
+        abort,blur,cancel,canplay,canplaythrough,change,click,close,contextmenu,cuechange,dblclick,drag,dragend,dragenter,dragleave,dragover,dragstart,drop,durationchange,emptied,ended,error,focus,input,invalid,keydown,keypress,keyup,load,loadeddata,loadedmetadata,loadstart,mousedown,mouseenter,mouseleave,mousemove,mouseout,mouseover,mouseup,mousewheel,pause,play,playing,progress,ratechange,reset,resize,scroll,seeked,seeking,select,show,stalled,submit,suspend,timeupdate,toggle,volumechange,waiting,autocomplete,autocompleteerror,beforecopy,beforecut,beforepaste,copy,cut,paste,search,selectstart,wheel,webkitfullscreenchange,webkitfullscreenerror
+
+    -> 样式操作
+        css, addClass, removeClass, hasClass, toggleClass
+        -> css
+            1) css( 'color', 'blue' )
+            2) css( 'color' )
+            3) css( { color: 'red' } )
+        -> addClass
+        -> removeClass
+            <div class="c c1 c2 c"></div> 
+        -> hasClass
+        -> toggleClass
+    
+    -> 属性操作
+        attr, prop, html, text, val
+
+
+
+6. 插件机制
+    -> 插件实现原理
+    -> 常见插件举例
+    -> 自定义插件
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

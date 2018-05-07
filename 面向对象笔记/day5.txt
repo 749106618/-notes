@@ -1,0 +1,212 @@
+1. 复习
+	var num = 123;
+	function num () {
+		console.log( "Hello" );
+	}
+	console.log( num );
+
+2. 递归的概念
+	-> 递归就是直接或间接的调用自己
+		-> 直接调用
+			function func() {
+				// ...
+				console.log( 123 );
+				
+				func(); // 递归了
+				// ...
+			}
+		-> 间接调用
+			function func1 () {
+				func2();
+			}
+			function func2 () {
+				func1();
+			}
+	-> 就以直接调用为例. 分析特点.
+		将函数调用想象成做一件事儿. 函数调用, 就是在做事儿. 
+		递归, 就是函数在调用的时候, 转而去调用自己.
+
+		就是要完成 xxx1, 就完成 xxx2
+			  完成 xxx2, 就完成 xxx3
+			  完成 xxx3, 就完成 xxx4
+			  ... ...
+
+		其实就是将要做某件事儿, 转换成已经解决的问题. 然后根据逻辑关系找到临界条件( 已经解决的问题 )
+
+	-> 求 n 的阶乘
+		n 的阶乘 记为 n!, 表示 从 1 一直累乘到 n. 比如 3! == 1 * 2 * 3, 5! == 1 * 2 * 3 * 4 * 5
+
+3. 利用递归实现深拷贝
+	-> 深拷贝
+		-> 拷贝: 复制
+			var o = { name: 'itcast' };
+			var o1 = o;
+			// 拷贝
+			var o2 = {};
+			o2.name = o.name;
+
+			clone: for-in 遍历对象, 然后将一个对象成员加到 {} 上, 返回
+		-> 代码
+			function clone ( obj ) {
+				// 将 目标对象 拷贝一份
+				var src = {},
+					k;
+				for ( k in obj ) {
+					src[ k ] = obj[ k ];
+				}
+				return src;
+			}
+
+4. document.getElementsByClassName 
+	使用递归实现该方法
+
+	get*By*Name( '*' )
+
+	父子节点的关系去完成
+
+	body下找所有的子元素, 凡是有 className 等于 给定值 的就取出来
+	但是 标签还有子标签, 利用递归处理子标签
+
+
+5. 闭包应用
+	-> 闭包的概念
+	-> 闭包代码的基本结构
+		function foo () {
+			var num = 123;
+			return function () {
+				return num;
+			}
+		}
+	-> 如果函数中定义了两个变量, 外界如何访问
+		function foo () {
+			var num1 = 123, 
+				num2 = 456;
+			// 怎样让外界既可以访问 num1 又可以访问 num2
+			return [
+				function () {
+					return num1;
+				},
+				function () {
+					return num2;
+				}
+			];
+		}
+	-> 闭包实现各种特性, 其根本的核心内容只有两个
+		1> 带有私有数据的函数
+			function foo () {
+				var num = 123;
+				return function () {
+					// 可以访问 num
+				}
+			}
+			var func = foo();
+			// 称 func 是一个 带有私有数据的 函数
+			// 称 func 带有缓存
+		2> 带有私有数据的 对象
+
+6. 闭包的应用__沙箱模式
+	沙箱就是一个隔离的执行环境
+
+	在 js 中什么情况需要使用沙箱
+
+	function Person () {  ... }
+	var p = Person. ...
+	Person.prototype = ....
+	...
+
+	定义变量越多, 会怎样? 出现冲突的可能性越大.
+
+	(function () {} )();
+
+	var f = function () {};
+	f();
+
+	同理, 在 代码中 有时为了使得代码更加简洁, 会引入很多变量
+
+	(function () {
+		// 沙箱模式
+
+		// 所有的代码写在这里
+
+
+	})();
+
+
+7. 闭包的应用__简化递归函数的性能问题
+
+8. 闭包的应用__模拟 onload 事件的追加与移除
+
+	o.addEvent( function ... )
+	o.removeEvent( fn )
+
+	系统 调用 load()  按照一定顺序执行
+
+	所以, 我们需要有一个对象, 有两个方法, 用来追加移除事件, 需要一个私有数组存储函数
+
+	var itcastload = (function () {
+
+		// 私有数据
+
+		return {
+
+		};
+		
+	})();
+
+
+9. 利用闭包模拟一个缓存结构
+	cache 对象, 可以使用 cache[ key ] = value 存储数据, cache[ key ] 获得数据
+	当 cahche 里面的数据达到 1024 条, 将最早放进去的数据移除
+
+	cache = {} 可以存取数据, 但是不能限定数据的长度
+
+	如果需要限定数据, 就是在加入数据的时候 判读, 是否已超过尺寸. 
+	如果是, 则移除, 如果不是, 则什么也不做
+
+	将 cache 做成函数, 添加数据使用 cache( key, value )
+	而且函数本身也是对象
+
+	function cache ( key, value ) {
+
+		// 可以在这里加上限定长度的代码
+
+		cache[ key ] = value;
+	}
+
+	由于需要记录键的数量. 并且需要记录添加数据的先后顺序. 所有首先考虑有序的数组.
+	因此需要让 cache 函数带有缓存功能
+
+	var cache = (function () {
+		var data = [];
+
+		function cache ( key, value ) {
+
+			// 做判断, 如果超出范围, 则, 将最开始加入的 移除 
+			// 将数组 第 0 项元素移除的 splice, shift
+
+			cache[ key ] = value;
+		}
+		return cache;
+	})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

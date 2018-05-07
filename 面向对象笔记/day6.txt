@@ -1,0 +1,254 @@
+1. 函数的四种调用模式
+	-> 函数有下列调用模式
+		1> 函数模式
+		2> 方法模式
+		3> 构造器模式
+		4> 上下文模式
+
+2. 函数调用 模式
+	-> 函数的定义方式
+		1> 声明式
+		2> 表达式式
+		3> Function
+	-> 单独独立调用的就是函数
+		函数名( 参数 )
+	-> this 表示全局对象
+	-> 任何自调用函数都是函数模式
+
+3. 方法调用 模式   method
+	-> 区分
+		方法本身就是函数, 但是方法不是单独独立的调用, 而是通过一个对象引导调用.
+
+		对象.方法( 参数 )
+	-> this 表示引导方法的对象
+
+4. 面试题
+	var length = 10;
+	function fn() {
+		console.log( this.length );
+	}
+	var obj = {
+		length: 5,
+		method: function ( fn ) {
+			fn();
+			arguments[ 0 ]();
+		}
+	};
+	obj.method( fn, 1 );
+
+5. 构造器模式(构造函数模式, 构造方法模式)
+	constructor
+	-> 区分
+		使用 new 关键字引导
+	-> 执行步骤
+		var p = new Person();
+		new 是一个运算符, 专门用来申请创建对象, 创建出来的对象传递给构造函数的 this
+		利用构造函数对其初始化
+
+		function Person () {
+			this.name = 'jim',
+			this.age = 19;
+			this.gender = 'male';
+		}
+	-> 返回值
+		如果不写 return 语句, 那么 构造函数 默认返回 this
+		如果在构造函数中写上 return 语句, 并紧跟基本类型( return num, return 1223 ). 则忽略返回类型. 
+		如果在构造函数中写上 return 语句, 并且紧跟引用类型, 那么构造函数返回该引用类型数据, 而忽略 this
+
+	-> 如果调用构造函数的时候, 构造函数没有参数, 圆括号是可以省略的
+
+
+6. 关于构造函数结核性的一个小结
+	1> 如果构造函数没有参数, 可以省略 圆括号
+		var p = new Person;
+	2> 如果希望创建对象并直接调用其方法
+		( new Person () ).sayHello()
+		-> 可以省略调整结核性的圆括号
+			new Person().sayHello()
+		-> 如果想要省略构造函数的圆括号, 就必须添加结核性的圆括号
+			(new Person).sayHello()
+
+7. 上下文调用模式
+	就是 环境调用模式 => 在不同环境下的不同调用模式
+	简单说就是统一一种格式, 可以实现 函数模式与方法模式
+
+	-> 语法(区分)
+		1> call 形式
+			函数名.call( ... )
+		2> apply 形式
+			函数名.apply( ... )
+		这两种形式功能完全一样, 唯一不同的是参数的形式. 首先学习 apply, 再来看 call 形式
+
+	-> 用法
+		存在上下文调用的目的就是为了实现借用方法
+
+		function foo () {
+			console.log( this );
+		}
+
+		var o = { name: 'jim' };
+
+		foo();
+
+		o.func = foo;
+		o.func();
+
+		// 如果需要让函数以函数的形式调用, 可以使用
+		foo.apply( null ) 或 foo.apply()
+		
+		// 如果希望他是方法调用模式, 注意需要提供一个宿主对象
+		foo.apply( o )
+
+	-> 带有参数的函数如何实现上下文调用
+		function foo ( num1, num2 ) {
+			console.log( this );
+			return num1 + num2;
+		} 
+
+		// 函数调用模式
+		var res1 = foo( 123, 567 );
+
+		// 方法调用
+		var o = { name: 'jim' };
+		o.func = foo;
+
+		var res2 = o.func( 123, 567 );
+	
+		使用 apply 进行调用, 如果函数是带有参数的. apply 的第一个参数要么是 null 要么是对象
+		如果是 null 就是函数调用, 如果是 对象就是 方法对象, 该对象就是宿主对象, 后面紧跟一个
+		数组参数, 将函数的参数依次放在数组中.	
+
+		例如: 函数模式 		foo( 123, 567 );
+			  apply    		foo.apply( null, [ 123, 567 ] )
+
+		如果有一个函数调用: func( '张三', 19, '男' ), 将其修改成 apply 模式
+		func.apply( null, [ '张三', 19, '男'] )
+
+		方法模式:			o.func( 123, 567 )
+		apply				foo.apply( o, [ 123, 567 ] )
+
+
+8. call 调用
+	在使用 apply 调用的时候, 函数参数, 必须以数组的形式存在. 但是有些时候数组封装比较复杂
+	所以引入 call 调用, call 调用与 apply 完全相同, 唯一不同是是参数不需要使用数组
+
+	foo( 123, 567 );
+
+	foo.apply( null, [ 123, 567 ] );
+
+	foo.call( null, 123, 567 );
+
+
+9. 借用构造方法实现继承
+	function Person ( name, age, gender ) {
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+	}
+
+	function Student ( name, age, gender, course ) {
+
+		Person.call( this, name, age, gender );
+
+		this.course = course;
+	}
+
+	var p = new Student ( 'jim', 19, 'male', '前端' );
+
+
+10. 函数的 bind 方法
+	bind 就是 绑定
+
+
+11. Object.prototype 的成员
+	1) constructor
+	2) hasOwnProperty 判断该属性是否为自己提供
+	3) propertyIsEnumerable 判断属性是否可以枚举
+	4) isPrototypeOf	判断是否为原型对象
+	5) toString, toLocaleString, valueOf
+
+12. 包装对象
+	字符串 string 是基本类型, 理论上讲不应该包含方法
+	charAt, substr, slice, ...
+
+	在 js 中为了更好的使用数据, 为三个基本类型提供了对应的对象类型
+
+	Number
+	String
+	Boolean
+
+	在 开发中常常会使用基本数据类型, 但是基本数据类型没有方法, 因此 js 引擎会在需要的时候
+	自动的将基本类型转换成对象类型.
+
+	"abc".charAt( 1 )
+
+	"abc" -> new String( "abc" )
+	s.charAt( 1 ) 返回结果
+	s 就被销毁
+
+	当	基本类型.方法 的时候. 解释器首先将基本类型转换成对应的对象类型, 然后调用方法. 
+	方法执行结束后, 这个对象就被立刻回收
+
+	在 apply 和 call 调用的时候, 也会有转换发生. 上下文调用的第一个参数必须是对象. 如果传递的是数字
+	就会自动转换成对应的包装类型
+
+13. getter 与 setter 的语法糖
+
+	语法糖: 为了方便开发而给出的语法结构
+
+	var o = (function () {
+		var num = 123;
+		return {
+			get_num: function () {
+				return num;
+			},
+			set_num: function ( v ) {
+				num = v;
+			}
+		};
+	})();
+
+	// 获得数据
+	o.get_num();			=> o.num 形式
+
+	// 设置
+	o.set_num( 456 );		=> o.num = 456 形式
+
+	var o = (function () {
+		var num = 123;
+		return {
+				
+			// get 名字 () { 逻辑体 }
+			get num () {
+				return num;
+			}
+
+			// set 名字 ( v ) { 逻辑体 }
+			set num ( v ) {
+				num = v;
+			}
+		};
+	})();
+
+14. ES5 中引入的部分数组方法
+	1> forEach
+	2> map
+	3> filter
+	4> some
+	5> every
+	6> indexOf
+	7> lastIndexOf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
