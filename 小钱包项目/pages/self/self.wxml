@@ -1,0 +1,90 @@
+<view class="container">
+    <view class="main">
+        <view class="head">
+            <view class="head_in">
+                <image src="{{userinfo.photo}}"></image>
+            </view>
+        </view>
+        <view class="nickName">{{userinfo.nickName}}</view>
+        <view class="editBox">
+            <navigator url="../selfModel/myData/myData" hover-class="none">
+                <view class="editBox_in">编辑个人资料</view>
+            </navigator>
+        </view>
+        <view class="tabBar clearfix">
+            <view class="tabBar_in">
+                <navigator url="../selfModel/myAttention/myAttention?userId={{userinfo.id}}" hover-class="none">
+                    <view class="top">{{userinfo.followNum}}</view>
+                    <view class="bottom">关注</view>
+                    <view class="line"></view>
+                </navigator>
+            </view>
+            <view class="tabBar_in">
+                <navigator url="../selfModel/myFans/myFans?userId={{userinfo.id}}" hover-class="none">
+                    <view class="top">{{userinfo.fansNum}}</view>
+                    <view class="bottom">粉丝</view>
+                    <view class="line"></view>
+                </navigator>
+            </view>
+            <view class="tabBar_in">
+                <navigator url="../messageModel/getPraise/getPraise" hover-class="none">
+                    <view class="top">{{userinfo.noteFollowedNum + userinfo.noteLikedNum}}</view>
+                    <view class="bottom">获赞和收藏</view>
+                </navigator>
+            </view>
+        </view>
+
+        <image class="bgc" src="../../icon/bg_mine.png"></image>
+    </view>
+    <navigator url="../selfModel/myNotes/myNotes" hover-class="none">
+        <view class="msg_top_item">
+            <image class="icon1" src="../../icon/icon_note_mine.png" mode="widthFix"></image>
+            <view class="char">我的笔记</view>
+            <image class="icon2" src="../../icon/icon_arrow1.png"></image>
+            <view class="line"></view>
+        </view>
+    </navigator>
+    <navigator url="../message/message" hover-class="none">
+        <view class="msg_top_item">
+            <image class="icon1" src="../../icon/icon_meassage_mine.png" mode="widthFix"></image>
+            <view class="char">我的消息</view>
+            <image class="icon2" src="../../icon/icon_arrow1.png"></image>
+            <view class="line"></view>
+        </view>
+    </navigator>
+    <navigator url="../selfModel/myCollect/myCollect" hover-class="none">
+        <view class="msg_top_item">
+            <image class="icon1" src="../../icon/icon_conllection_mine.png" mode="widthFix"></image>
+            <view class="char">我的收藏</view>
+            <image class="icon2" src="../../icon/icon_arrow1.png"></image>
+            <view class="line"></view>
+        </view>
+    </navigator>
+    <navigator url="../selfModel/contactUs/contactUs" hover-class="none">
+        <view class="msg_top_item">
+            <image class="icon1" src="../../icon/icon_communicate_mine.png" mode="widthFix"></image>
+            <view class="char">联系我们</view>
+            <image class="icon2" src="../../icon/icon_arrow1.png"></image>
+            <view class="line"></view>
+        </view>
+    </navigator>
+</view>
+<view class="tabbar clearfix">
+    <view class="index" bindtap="navigate">
+        <view>
+            <image src="../../icon/icon_homepage_nor.png"></image>
+            <view  class="index_in" >首页</view>
+        </view>
+    </view>
+    <view class="pulish">
+        <navigator url="../issue/issue" hover-class="none">
+            <image src="../../icon/icon_pulish.png"></image>
+        </navigator>
+    </view>
+    <view class="self">
+        <view>
+            <image src="../../icon/icon_mine_pre.png"></image>
+            <view class="self_in" >我的</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,7 @@
+.idea/
+app-common/app-common.iml
+project.config.json
+*.iml
+*.log*
+*/target/*
+/*/target/

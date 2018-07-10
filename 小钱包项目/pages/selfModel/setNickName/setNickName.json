@@ -1,0 +1,6 @@
+{
+  "enablePullDownRefresh": false,
+  "backgroundColor": "#fff",
+  "navigationBarTitleText": "修改昵称",
+  "navigationBarTextStyle":"black"
+}

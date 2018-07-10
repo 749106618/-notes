@@ -1,0 +1,16 @@
+<view class="container">
+    <view class="select">
+        <block wx:for="{{labelList}}">
+            <view class="select_item" data-content="{{item.name}}" data-twolevel="{{item.id}}">
+                <view class="classify" style="width: 688rpx">{{item.name}}</view>
+                <image  wx:if="{{item.isChecked == 0}}" src="../../../icon/no_check.png"
+                        data-index="{{index}}" bindtap="checked"></image>
+                <image  wx:if="{{item.isChecked == 1}}" src="../../../icon/check.png"
+                        data-index="{{index}}" bindtap="checked"></image>
+                <view class="line"></view>
+            </view>
+        </block>
+    </view>
+
+    <view class="issue" bindtap="backIssue">提交</view>
+</view>

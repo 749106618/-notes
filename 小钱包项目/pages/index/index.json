@@ -1,0 +1,6 @@
+{
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#FFF",
+  "navigationBarTitleText": "小钱包",
+  "navigationBarTextStyle":"black"
+}

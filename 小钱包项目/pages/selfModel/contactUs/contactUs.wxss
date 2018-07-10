@@ -1,0 +1,83 @@
+.intro{
+    background-color: #fff;
+    margin-top: 19rpx;
+}
+.intro textarea{
+    width: 724rpx;
+    padding-top: 32rpx;
+    padding-bottom: 230rpx;
+    padding-left: 26rpx;
+    color: #48494A;
+    font-size: 29rpx;
+}
+
+.placeholder{
+    font-size: 29rpx;
+    color: #CDCDCD;
+}
+
+.save-in{
+    width: 701rpx;
+    height: 91rpx;
+    border-radius: 50rpx;
+    background-color: #56D6CC;
+    color: #ffffff;
+    font-size: 37rpx;
+    text-align: center;
+    line-height: 91rpx;
+}
+.save{
+    padding: 59rpx 29rpx 109rpx;
+}
+.msg_top_item .char{
+    font-size: 29rpx;
+    color: #48494A;
+    margin-left: 26rpx;
+    letter-spacing: 2rpx;
+}
+.line{
+    width: 703rpx;
+    height: 2rpx;
+    background-color: #EEEEEE;
+    position: absolute;
+    left: 23rpx;
+    bottom: 0;
+}
+
+.msg_top_item{
+    height: 119rpx;
+    display: flex;
+    align-items:center;
+    position: relative;
+}
+
+.photo{
+    position: relative;
+    padding-left: 26rpx;
+}
+.photo .add_img{
+    width: 125rpx;
+    height: 125rpx;
+}
+.photo .img_list{
+    margin-left: 17rpx;
+    width: 125rpx;
+    height: 125rpx;
+    display: inline-block;
+    position: relative;
+}
+.photo .img_list:nth-child(6){
+    margin-left: 0;
+    margin-top: 10rpx;
+}
+.photo .img_list .img_list_1{
+    width: 125rpx;
+    height: 125rpx;
+}
+.photo .img_list_2{
+    width: 36rpx;
+    height: 36rpx;
+    position: absolute;
+    left: 107rpx;
+    top: -18rpx;
+}

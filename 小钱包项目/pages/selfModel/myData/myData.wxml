@@ -1,0 +1,67 @@
+<view class="container">
+    <view class="msg_top">
+        <view class="msg_top_item">
+            <view class="char">头像</view>
+            <view class="tag">
+                <image  src="{{tempFilePaths?tempFilePaths : ''}}"
+                        bindtap="chooseimage"></image>
+            </view>
+            <image class="icon2" src="../../../icon/icon_arrow1.png"></image>
+            <view class="line"></view>
+        </view>
+        <navigator url="../setNickName/setNickName" hover-class="none">
+            <view class="msg_top_item">
+                <view class="char">昵称</view>
+                <view class="info">{{userInfo.nickName ? userInfo.nickName : ''}}</view>
+                <image class="icon2" src="../../../icon/icon_arrow1.png"></image>
+                <view class="line"></view>
+            </view>
+        </navigator>
+        <view class="msg_top_item">
+            <view class="char">性别</view>
+            <view class="info" bindtap="chooseGender">{{gender==1?'男':gender==2?'女':'未知'}}</view>
+            <image class="icon2" src="../../../icon/icon_arrow1.png"></image>
+            <view class="line"></view>
+        </view>
+        <view class="msg_top_item">
+            <view class="char">生日</view>
+            <picker mode="date" value="{{date?date:0}}" start="1900-09-01" end="2050-09-01" bindchange="bindDateChange">
+                <view class="info">
+                    {{date?date:''}}
+                </view>
+            </picker>
+            <image class="icon2" src="../../../icon/icon_arrow1.png"></image>
+            <view class="line"></view>
+        </view>
+        <view class="msg_top_item">
+            <view class="char">常住地</view>
+            <picker mode="region" value="{{region}}" bindchange="bindRegionChange" custom-item="{{customItem}}">
+                <view class="info" id="czd">
+                    {{region=='_,_,_'?'':region}}
+                </view>
+            </picker>
+
+            <image class="icon2" src="../../../icon/icon_arrow1.png"></image>
+            <view class="line"></view>
+        </view>
+        <navigator url="../setPhoneNumber/setPhoneNumber" hover-class="none">
+            <view class="msg_top_item">
+                <view class="char">手机</view>
+                <view class="info">{{userInfo.mobile?userInfo.mobile:'未绑定'}}</view>
+                <image class="icon2" src="../../../icon/icon_arrow1.png"></image>
+                <view class="line"></view>
+            </view>
+        </navigator>
+    </view>
+    <view class="intro">
+        <view class="msg_top_item">
+            <view class="char">个人简介</view>
+            <view class="line"></view>
+        </view>
+        <textarea auto-height placeholder="请输入您的个人简介......" bindinput="iptDetail"  placeholder-class="placeholder" value="{{detail=='null'?'':detail}}" maxlength="100" />
+    </view>
+
+    <view class="save">
+        <view class="save-in" bindtap="svae">保存修改</view>
+    </view>
+</view>

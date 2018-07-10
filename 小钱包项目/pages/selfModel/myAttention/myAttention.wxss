@@ -1,0 +1,69 @@
+page{
+    background-color: #fff;
+}
+.container{
+    background-color: #fff;
+    border-top: 2rpx solid #EEEEEE;
+}
+
+.praise{
+    height: 119rpx;
+    overflow: hidden;
+    position: relative;
+}
+
+.praise .head{
+    width: 74rpx;
+    height: 74rpx;
+    float: left;
+    margin-top: 23rpx;
+    margin-left: 23rpx;
+    border-radius: 50%;
+}
+.praise .info{
+    float: left;
+    margin-left: 23rpx;
+    margin-top: 32rpx;
+}
+.praise .info .top .txt1{
+    font-size: 28rpx;
+    color: #333333;
+    font-weight: 900;
+}
+.praise .info .top .txt2{
+    font-size: 25rpx;
+    color: #333333;
+    margin-left: 10rpx;
+    box-sizing: border-box;
+}
+.praise .info .bottom{
+    font-size: 24rpx;
+    color: #414141;
+    margin-top: 5rpx;
+}
+
+.praise .p_right{
+    float: right;
+    margin-right: 23rpx;
+    line-height: 119rpx;
+    font-size: 28rpx;
+    color: #7D7D7D;
+
+}
+.praise .p_right1{
+    margin-top: 35rpx;
+    float: right;
+    margin-right: 23rpx;
+    width: 132rpx;
+    height: 52rpx;
+}
+
+.praise .line{
+    width: 727rpx;
+    height: 2rpx;
+    background-color: #EEEEEE;
+    position: absolute;
+    margin-left: 23rpx;
+    left: 0;
+    bottom: 0;
+}

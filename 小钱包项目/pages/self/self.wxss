@@ -1,0 +1,119 @@
+.main{
+    position: relative;
+}
+.bgc{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.head{
+    height: 170rpx;
+    width: 100%;
+    padding-top: 25rpx;
+}
+.head_in{
+    height: 145rpx;
+    width: 145rpx;
+    background-color: #fff;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.head_in image{
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 50%;
+}
+
+.nickName{
+    height: 78rpx;
+    line-height: 78rpx;
+    color: #fff;
+    font-size: 28rpx;
+    text-align: center;
+}
+
+.editBox{
+    height: 71rpx;
+}
+.editBox .editBox_in{
+    margin: 0 auto;
+    width: 181rpx;
+    height: 41rpx;
+    border-radius: 27rpx;
+    border: 2rpx solid #fff;
+    text-align: center;
+    line-height: 38rpx;
+    font-size: 20rpx;
+    color: #fff;
+    padding-left: 1rpx;
+}
+
+.tabBar{
+    height: 127rpx;
+    color: #fff;
+    padding-top: 28rpx;
+}
+.tabBar_in{
+    width: 250rpx;
+    position: relative;
+    float: left;
+}
+.tabBar_in .top{
+    height: 40rpx;
+    text-align: center;
+    font-size: 27rpx;
+    font-weight: 700;
+}
+.tabBar_in .bottom{
+    text-align: center;
+    height: 59rpx;
+    font-size: 30rpx;
+}
+.tabBar_in .line{
+    height: 66rpx;
+    width: 2rpx;
+    background-color: #fff;
+    top: 7rpx;
+    right: 0;
+    position: absolute;
+}
+
+.msg_top_item{
+    margin-top: 20rpx;
+    height: 119rpx;
+    display: flex;
+    align-items:center;
+    position: relative;
+    background-color: #fff;
+}
+.msg_top_item .icon1{
+    width: 46rpx;
+    height: 46rpx;
+    margin-left: 23rpx;
+}
+.msg_top_item .char{
+    font-size: 29rpx;
+    color: #222222;
+    margin-left: 21rpx;
+}
+.msg_top_item .icon2{
+    width: 32rpx;
+    height: 32rpx;
+    position: absolute;
+    right: 30rpx;
+    top: 45rpx;
+}
+
+.tabbar .index .index_in{
+    color: #AAAAAA;
+}
+
+.tabbar .self .self_in{
+    color: #393939;
+}

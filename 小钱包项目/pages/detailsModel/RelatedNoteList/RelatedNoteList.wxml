@@ -1,0 +1,59 @@
+<view class="container">
+    <block wx:if="{{RelatedNoteList}}">
+        <view class="main clearfix">
+            <view class="main_left">
+                <view wx:for="{{RelatedNoteList}}" wx:if="{{index%2==0}}"  class="item">
+                    <navigator url="../../details/details?noteId={{item.noteId}}" hover-class="none">
+                        <view class="banner">
+                            <image src="{{item.imageList[0]}}" mode="widthFix"></image>
+                        </view>
+                        <view class="content">{{item.noteTitle}}</view>
+                        <view class="msg clearfix">
+                            <view class="left">
+                                <image class="head" src="{{item.userPhoto}}"></image>
+                                <text class="name">{{item.userName}}</text>
+                            </view>
+                            <view class="right">
+                                <image class="star" src="../../../icon/icon_conllection_nor.png"></image>
+                                <text class="num">{{item.likeNum}}</text>
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+            <view class="main_right">
+                <view wx:for="{{RelatedNoteList}}"  wx:if="{{index%2==1}}" class="item">
+                    <navigator url="../../details/details?noteId={{item.noteId}}" hover-class="none">
+                        <view class="banner">
+                            <image src="{{item.imageList[0]}}" mode="widthFix"></image>
+                        </view>
+                        <view class="content">{{item.noteTitle}}</view>
+                        <view class="msg clearfix">
+                            <view class="left">
+                                <image class="head" src="{{item.userPhoto}}"></image>
+                                <text class="name">{{item.userName}}</text>
+                            </view>
+                            <view class="right">
+                                <image class="star" src="../../../icon/icon_conllection_nor.png"></image>
+                                <text class="num">{{item.likeNum}}</text>
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+            <view class='loading {{loading ? "show" : "hide"}}'>
+                <view class='loading-box'>
+                    <view></view>
+                    <view></view>
+                    <view></view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="notMsg">
+            <image src="../../../icon/pic_4.png"></image>
+        </view>
+        <view class="notMsg_bottom">你还没有笔记哟！</view>
+    </block>
+</view>

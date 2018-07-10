@@ -1,0 +1,53 @@
+<view class="container">
+        <view class="banner">
+            <view class="b_top"><image src="{{activityDetail.image}}" mode="widthFix"></image></view>
+            <view class="b_middle">{{activityDetail.title }}</view>
+            <view class="b_bottom"><image src="../../icon/icon_people.png"></image> 已有 {{activityDetail.userNum}} 人参加</view>
+        </view>
+        <view class="content">
+            <view class="c_top"><image src="../../icon/icon_active.png"></image><text>活动简介</text></view>
+            <view class="c_bottom">
+                <block wx:for="{{activityDetail.detail}}">
+                    <view class="c_bottom_in">{{item}}</view>
+                </block>
+            </view>
+
+        </view>
+        <view class="plan">
+            <view class="p_item">
+                <view class="p_item_left">报名时间</view>
+                <view class="p_item_right" style="margin-left: 42rpx">{{activityDetail.signTime}} 前</view>
+                <view class="line"></view>
+            </view>
+            <view class="p_item">
+                <view class="both_left">活动地点</view>
+                <view class="both_right clearfix" id="place">{{activityDetail.place}}</view>
+                <view class="line"></view>
+            </view>
+            <view class="p_item">
+                <view class="p_item_left">活动价格</view>
+                <view class="p_item_right"><text style="color: #DE393B; font-size: 26rpx;font-weight: 700">{{activityDetail.price/100}}</text> 元/人</view>
+                <view class="line"></view>
+            </view>
+            <view class="p_item">
+                <view class="p_item_left">活动时间</view>
+                <view class="p_item_right">{{activityDetail.startTime}}</view>
+            </view>
+
+        </view>
+        <view class="notice">
+            <view class="top">注意事项</view>
+            <view class="bottom">
+                <block wx:for="{{activityDetail.attention}}">
+                    <view>{{item}}</view>
+                </block>
+            </view>
+
+        </view>
+    <navigator url="../activityModel/applyActivity/applyActivity?activityId={{activityDetail.id}}&title={{activityDetail.title}}&image={{activityDetail.image}}&price={{activityDetail.price}}">
+        <view class="apply">
+            <view class="apply_in">我要报名</view>
+        </view>
+    </navigator>
+
+</view>

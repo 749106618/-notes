@@ -1,0 +1,126 @@
+.search input{
+    width: 701rpx;
+    height: 56rpx;
+    border-radius: 142rpx;
+    color: #AAAAAA;
+    font-size: 24rpx;
+    padding-left: 234rpx;
+    line-height: 56rpx;
+    margin: 0rpx auto;
+    background-color: #EEEEEE;
+    box-sizing: border-box;
+}
+.search{
+    position: relative;
+    background-color: #fff;
+}
+.search image{
+    width: 31rpx;
+    height: 31rpx;
+    position: absolute;
+    top: 13rpx;
+    left: 214rpx;
+}
+
+.nav{
+    padding-top: 25rpx;
+    padding-left: 20rpx;
+    background-color: #fff;
+}
+
+.nav_item{
+    display: inline-block;
+    height: 72rpx;
+    text-align: center;
+    line-height: 72rpx;
+    font-size: 24rpx;
+    color: #888888;
+    padding: 0 20rpx;
+}
+
+.on{
+    border-bottom:4rpx solid #91DED8;
+}
+
+.main{
+    background-color: #F2F2F2;
+    padding: 0 24rpx;
+}
+.main_left{
+    float: left;
+    width:341rpx;
+}
+.main_right{
+    float: right;
+    width:341rpx;
+}
+.main .item{
+    width: 341rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+    padding-bottom: 25rpx;
+    display: inline-block;
+    margin-top: 23rpx;
+}
+.main .item .banner image{
+    width: 100%;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+    height: 341rpx;
+}
+.main .item .content{
+    height: 70rpx;
+    width: 300rpx;
+    margin: 20rpx;
+    color: #222222;
+    font-size: 27rpx;
+    font-weight: 700;
+    overflow : hidden;
+    text-align: justify;
+    word-break: break-all;
+}
+.main .item .msg{
+    padding-left: 19rpx;
+    height: 50rpx;
+}
+
+
+.msg .left{
+    float: left;
+
+}
+.msg .right{
+    float: right;
+    margin-right: 17rpx;
+}
+.main .item .msg navigator{
+    float: left;
+}
+.main .item .msg .head{
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+}
+.main .item .msg .name{
+    margin-left: 15rpx;
+    font-size: 20rpx;
+    color: #3F3F3F;
+    line-height: 50rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left;
+}
+.main .item .msg .star{
+    width: 26rpx;
+    height: 24rpx;
+    float: left;
+    margin-top:13.5rpx
+}
+.main .item .msg .num{
+    font-size: 24rpx;
+    color: #888888;
+    margin-left: 17rpx;
+    line-height: 50rpx;
+    float: left;
+}

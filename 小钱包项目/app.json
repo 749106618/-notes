@@ -1,0 +1,54 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/personalHomePage/personalHomePage",
+    "pages/issue/issue",
+    "pages/issueModel/selectTag/selectTag",
+    "pages/detailsModel/RelatedNoteList/RelatedNoteList",
+    "pages/details/details",
+    "pages/list/list",
+    "pages/activityModel/applyActivity/applyActivity",
+    "pages/activity/activity",
+    "pages/selfModel/contactUs/contactUs",
+    "pages/selfModel/editor/editor",
+    "pages/out/out",
+    "pages/selfModel/setNickName/setNickName",
+    "pages/selfModel/myData/myData",
+    "pages/self/self",
+    "pages/selfModel/setPhoneNumber/setPhoneNumber",
+    "pages/issueModel/selectClassify/selectClassify",
+    "pages/message/message",
+    "pages/detailsModel/commentList/commentList",
+    "pages/detailsModel/replyList/replyList",
+    "pages/selfModel/myAttention/myAttention",
+    "pages/selfModel/myFans/myFans",
+    "pages/selfModel/myCollect/myCollect",
+    "pages/selfModel/myNotes/myNotes",
+    "pages/indexModel/search/search",
+    "pages/messageModel/getSystemInfo/getSystemInfo",
+    "pages/messageModel/getAttention/getAttention",
+    "pages/messageModel/getComment/getComment",
+    "pages/messageModel/getPraise/getPraise",
+    "pages/activityModel/applyPass/applyPass"
+
+  ],
+  "window":{
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index"
+      },
+      {
+        "pagePath": "pages/self/self"
+      }
+    ],
+    "color": "#A1A1A1",
+    "selectedColor": "#4B89F3",
+    "borderStyle": "white",
+    "backgroundColor": "#FFF"
+  }
+}

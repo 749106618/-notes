@@ -1,0 +1,24 @@
+<view class="container">
+    <view class="select">
+            <view class="select_item" bindtap="backIssue" data-content="太太创业" >
+                <view class="classify">太太创业</view>
+                <view class="i_arrows">
+                    <image src="../../../icon/icon_arrow1.png"></image>
+                </view>
+                <view class="line"></view>
+            </view>
+            <view class="select_item" bindtap="backIssue" data-content="太太小店" >
+            <view class="classify">太太小店</view>
+            <view class="i_arrows">
+                <image src="../../../icon/icon_arrow1.png"></image>
+            </view>
+            <view class="line"></view>
+        </view>
+            <view class="select_item" bindtap="backIssue" data-content="投资理财" >
+            <view class="classify">投资理财</view>
+            <view class="i_arrows">
+                <image src="../../../icon/icon_arrow1.png"></image>
+            </view>
+        </view>
+    </view>
+</view>

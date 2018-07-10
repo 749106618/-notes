@@ -1,0 +1,15 @@
+<view class="container">
+    <view class="Main">
+        <view class="main clearfix">
+            <view class="main_left">手机号</view>
+            <view class="main_right"><input type="number" bindinput="MobileNumber" placeholder="请绑定手机号"/></view>
+            <view class="line"></view>
+            <view class="getVerifyCode" bindtap="getVerifyCode">{{qrObj.qrText}}</view>
+        </view>
+        <view class="main clearfix">
+            <view class="main_left">验证码</view>
+            <view class="main_right"><input type="number" bindinput="VerifyCode"  placeholder="请输入验证码"/></view>
+        </view>
+    </view>
+    <view class="save {{opacity}}" bindtap="bindMobile">保存</view>
+</view>

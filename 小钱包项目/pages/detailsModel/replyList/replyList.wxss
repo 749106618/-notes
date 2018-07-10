@@ -1,0 +1,175 @@
+.container{
+    background-color: #fff;
+    padding-bottom: 72rpx;
+    border-top: 2rpx solid #EEEEEE;
+}
+page{
+    background-color: #fff;
+}
+.observer{
+    padding-left: 120rpx;
+    padding-top: 32rpx;
+    padding-right: 25rpx;
+    padding-bottom: 30rpx;
+    position: relative;
+    border-bottom: 2rpx solid #EEEEEE;
+}
+.observer .head{
+    width: 73rpx;
+    height: 73rpx;
+    position: absolute;
+    top: 31rpx;
+    left: 23rpx;
+    border-radius: 50%;
+}
+.observer .o_detail .top{
+    font-size: 26rpx;
+    color: #666666;
+}
+.observer .o_detail .middle{
+    font-size: 28rpx;
+    color: #333333;
+    margin-top: 10rpx;
+}
+.observer .o_detail .bottom image{
+    height: 25rpx;
+    width: 25rpx;
+}
+.observer .bottom_time{
+    font-size: 20rpx;
+    color: #888888;
+    float: left;
+}
+.observer .bottom{
+    margin-top: 20rpx;
+    padding-right: 10rpx;
+}
+.observer .bottom_right{
+    float: right;
+    line-height: 25rpx;
+}
+.observer .bottom_hf{
+    font-size: 23rpx;
+    color: #666666;
+}
+.observer .bottom_img {
+    margin-left: 33rpx;
+    vertical-align:-1rpx;
+}
+.observer .bottom_praise{
+    font-size: 20rpx;
+    color: #707070;
+    margin-left: 10rpx;
+}
+.observer .reply{
+    padding: 26rpx 21rpx;
+    background-color: #EDEFF3;
+    font-size: 25rpx;
+    color: #333333;
+    border-radius: 10rpx;
+    margin-top: 20rpx;
+}
+.observer .reply .replier{
+    color: #666666;
+}
+.observer .reply .reply_hf{
+    color: #666666;
+    margin-left: 20rpx;
+}
+.observer .reply .reply_observer{
+    color: #666666;
+    margin-left: 20rpx;
+}
+.observer .reply .reply_bottom{
+    margin-top: 20rpx;
+}
+.observer .reply .reply_bottom text{
+    color: #17A0EE;
+    vertical-align:3rpx;
+}
+.observer .reply .reply_bottom image{
+    width: 23rpx;
+    height: 25rpx;
+    margin-left: 12rpx;
+}
+.observer_all{
+    height: 90rpx;
+    line-height: 90rpx;
+    font-size: 24rpx;
+    color: #A7A7A7;
+    text-align: center;
+}
+.sendReply{
+    height: 104rpx;
+    width: 750rpx;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    z-index: 9999;
+}
+.sendReply .comment_in{
+    margin: 15rpx 24rpx;
+    width: 580rpx;
+    height: 74rpx;
+    background-color: #EEEEEE;
+    line-height: 74rpx;
+    padding-left: 34rpx;
+    color: #222;
+    font-size: 27rpx;
+    border-radius: 35rpx;
+    box-sizing: border-box;
+    display: block;
+}
+.placeholder{
+    color: #bbb;
+}
+.sendReply .send{
+    width: 100rpx;
+    height: 70rpx;
+    text-align: center;
+    line-height: 70rpx;
+    background-color: #56D6CC;
+    color: #fff;
+    font-size: 28rpx;
+    position: absolute;
+    right: 23rpx;
+    top: 15rpx;
+    border-radius: 5rpx;
+}
+
+.bottom1{
+    height: 35rpx;
+    margin-top: 20rpx;
+    padding: 0 2rpx;
+}
+.bottom1 .bottom_time{
+    font-size: 20rpx;
+    color: #888888;
+    line-height: 35rpx;
+    float: left;
+}
+.bottom_right1{
+    float: right;
+}
+.bottom1 .bottom_hf{
+    font-size: 22rpx;
+    color: #666666;
+    line-height: 35rpx;
+    float: left;
+}
+.bottom1 .bottom_img {
+    margin-left: 33rpx;
+    float: left;
+    margin-top: 4rpx;
+    height:25rpx;
+    width:25rpx;
+}
+.bottom1 .bottom_praise{
+    font-size: 22rpx;
+    color: #707070;
+    line-height: 36rpx;
+    margin-left: 10rpx;
+    float: left;
+}

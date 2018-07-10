@@ -1,0 +1,147 @@
+/**app.wxss**/
+.clearfix::before,
+.clearfix::after{
+    content: "";
+    display: block;
+    height: 0;
+    line-height: 0px;
+    clear: both;
+    visibility: hidden;
+}
+
+page{
+    letter-spacing: 1rpx;
+    background-color: #F2F2F2;
+    width:100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+view{
+    box-sizing: border-box;
+}
+
+.notMsg{
+    margin-top: 198rpx;
+    margin-left: 202rpx;
+    width: 346rpx;
+    height: 246rpx;
+    overflow: hidden;
+}
+.notMsg image{
+    width: 246rpx;
+    height: 246rpx;
+    margin-left: 50rpx;
+}
+.notMsg_bottom{
+    text-align: center;
+    color: #A0A0A0;
+    font-size: 30rpx;
+    margin-top: 35rpx;
+}
+
+
+.loading-box {
+    width: 100%;
+    height: 60rpx;
+    display: flex;
+    flex: 0 1 auto;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+.loading-box > view:nth-child(0) {
+    animation: scale 0.75s 0s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+}
+.loading-box > view:nth-child(1) {
+    animation: scale 0.75s 0.12s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+}
+.loading-box > view:nth-child(2) {
+    animation: scale 0.75s 0.24s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+}
+.loading-box > view:nth-child(3) {
+    animation: scale 0.75s 0.36s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+}
+@keyframes scale {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    45% {
+        transform: scale(0.1);
+        opacity: 0.7;
+    }
+
+    80% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.loading-box > view {
+    background-color: #DDD;
+    width: 20rpx;
+    height: 20rpx;
+    border-radius: 100%;
+    margin: 4rpx;
+    animation-fill-mode: both;
+    display: inline-block;
+}
+
+.phcolor{
+    color: #BABABA;
+}
+
+.tabbar{
+    height: 98rpx;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap:warp;
+    justify-content:center;
+}
+
+.tabbar .pulish {
+    display: flex;
+    justify-content:center;
+}
+.tabbar .index,.tabbar .pulish,.tabbar .self{
+    flex:1;
+    -ms-flex:1;
+    -webkit-flex:1;
+    -webkit-box-flex:1;
+    display: flex;
+    align-items: center;
+}
+.tabbar .index,.tabbar .self{
+    padding-left: 125rpx;
+}
+.tabbar .index image,.tabbar .self image{
+    width: 51rpx;
+    height: 51rpx;
+}
+.tabbar .index .index_in,.tabbar .self .self_in{
+    width: 51rpx;
+    text-align: center;
+    font-size: 20rpx;
+    color: #393939;
+    line-height: .7;
+    letter-spacing: 3rpx;
+    padding-left: 1rpx;
+}
+.tabbar .pulish image{
+    width: 118rpx;
+    height: 98rpx;
+}
+
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
+
+

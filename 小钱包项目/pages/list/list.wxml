@@ -1,0 +1,77 @@
+<view class="container">
+    <navigator url="../indexModel/search/search">
+        <view class="search">
+            <input type="text" placeholder="找项目、学投资、关键词"/>
+            <image src="../../icon/icon_search.png"></image>
+        </view>
+    </navigator>
+    <view class="nav">
+        <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex"
+                     scroll-with-animation="true"
+                     scroll-left="left">
+            <block wx:for="{{list}}">
+                <view class="nav_item {{currentTab==index ? 'on' : ''}}" data-twolevel="{{item.id}}"
+                      bindtap="bindNavTab" data-current="{{index}}">{{item.name}}
+                </view>
+            </block>
+        </scroll-view>
+    </view>
+    <view class="main clearfix">
+        <view class="main_left">
+            <view wx:for="{{noteList}}" wx:if="{{index%2==0}}"  class="item" >
+                <navigator url="../details/details?noteId={{item.noteId}}" hover-class="none">
+                    <view class="banner">
+                        <image src="{{item.imageList[0]}}" mode="widthFix"></image>
+                    </view>
+                    <view class="content">{{item.noteTitle}}</view>
+                    <view class="msg clearfix">
+                        <view class="left clearfix">
+                            <navigator url="../personalHomePage/personalHomePage?userId={{item.userId}}"
+                                       hover-class="none">
+                                <image class="head" src="{{item.userPhoto}}"></image>
+                            </navigator>
+                            <text class="name">{{item.userName}}</text>
+                        </view>
+                        <view class="right clearfix">
+                            <image class="star" src="../../icon/icon_conllection_nor.png"></image>
+                            <text class="num">{{item.followNum}}</text>
+                        </view>
+
+                    </view>
+                </navigator>
+            </view>
+        </view>
+        <view class="main_right">
+            <view wx:for="{{noteList}}"  wx:if="{{index%2==1}}" class="item" >
+                <navigator url="../details/details?noteId={{item.noteId}}" hover-class="none">
+                    <view class="banner">
+                        <image src="{{item.imageList[0]}}" mode="widthFix"></image>
+                    </view>
+                    <view class="content">{{item.noteTitle}}</view>
+                    <view class="msg clearfix">
+                        <view class="left clearfix">
+                            <navigator url="../personalHomePage/personalHomePage?userId={{item.userId}}"
+                                       hover-class="none">
+                                <image class="head" src="{{item.userPhoto}}"></image>
+                            </navigator>
+                            <text class="name">{{item.userName}}</text>
+                        </view>
+                        <view class="right clearfix">
+                            <image class="star" src="../../icon/icon_conllection_nor.png"></image>
+                            <text class="num">{{item.followNum}}</text>
+                        </view>
+
+                    </view>
+                </navigator>
+            </view>
+        </view>
+        <view class='loading {{loading ? "show" : "hide"}}'>
+            <view class='loading-box'>
+                <view></view>
+                <view></view>
+                <view></view>
+            </view>
+        </view>
+    </view>
+</view>
+

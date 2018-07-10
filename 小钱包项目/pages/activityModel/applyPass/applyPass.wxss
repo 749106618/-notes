@@ -1,0 +1,43 @@
+.main{
+    height: 420rpx;
+    background-color: #fff;
+}
+
+.top{
+    width: 250rpx;
+    height: 250rpx;
+    margin: 0 auto;
+    margin-top: 30rpx;
+}
+.top image{
+    width: 100%;
+    height: 100%;
+}
+
+.middle{
+    line-height: 47rpx;
+    text-align: center;
+    color: #000000;
+    font-size: 36rpx;
+    font-weight: 700;
+}
+
+.bottom{
+    height: 41rpx;
+    color: #666666;
+    font-size: 28rpx;
+    text-align: center;
+    margin-top: 10rpx;
+}
+.back{
+    width: 701rpx;
+    height: 91rpx;
+    border-radius: 50rpx;
+    background-color: #56D6CC;
+    color: #ffffff;
+    font-size: 37rpx;
+    text-align: center;
+    line-height: 91rpx;
+    margin: 0 auto;
+    margin-top: 59rpx;
+}

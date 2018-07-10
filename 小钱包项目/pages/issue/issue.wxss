@@ -1,0 +1,116 @@
+.select{
+    background-color: #fff;
+    margin-top: 18rpx;
+}
+.select_item{
+    height: 100rpx;
+    display: flex;
+    align-content: center;
+    line-height: 100rpx;
+    position: relative;
+}
+
+.select_item image{
+    width: 29rpx;
+    height: 29rpx;
+}
+
+.select_item .classify{
+    font-size: 30rpx;
+    color: #222222;
+    margin-left: 25rpx;
+}
+.select_item .i_select{
+    color: #999999;
+    font-size: 27rpx;
+}
+.select_item .i_arrows{
+    margin-left: 12rpx;
+}
+.select_item .line{
+    width: 725rpx;
+    height: 2rpx;
+    background-color: #EEEEEE;
+    position: absolute;
+    left: 25rpx;
+    bottom: 0;
+}
+
+.main{
+    margin-top: 21rpx;
+    background-color: #fff;
+    padding: 0 25rpx;
+    padding-bottom: 32rpx;
+}
+
+.main .title{
+    height: 98rpx;
+    line-height: 96rpx;
+    color: #222222;
+    font-size: 28rpx;
+    border-bottom: 2rpx solid #EEEEEE;
+}
+.main .section textarea{
+    width: 100%;
+    margin-top: 52rpx;
+    margin-bottom: 230rpx;
+    font-size: 30rpx;
+    color: #222;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.placeholder{
+    font-size: 25rpx;
+}
+
+.photo .add_img{
+    width: 125rpx;
+    height: 125rpx;
+    float: left;
+}
+.photo .img_list{
+    margin-left: 17rpx;
+    width: 125rpx;
+    height: 125rpx;
+    display: flex;
+    align-items: center;
+    position: relative;
+    float: left;
+}
+.photo .img_list:nth-child(n+6){
+    margin-top: 10rpx;
+}
+.photo .img_list:nth-child(6){
+    margin-left: 0;
+}
+.photo .img_list_1{
+    width: 100%;
+    height: 100%;
+}
+.photo .img_list_2{
+    width: 36rpx;
+    height: 36rpx;
+    position: absolute;
+    left: 107rpx;
+    top: -18rpx;
+}
+
+.issue{
+    width: 701rpx;
+    height: 91rpx;
+    border-radius: 55rpx;
+    background-color: #56D6CC;
+    color: #ffffff;
+    font-size: 37rpx;
+    text-align: center;
+    line-height: 91rpx;
+    margin: 0 auto;
+    margin-top: 59rpx;
+    margin-bottom: 216rpx;
+}
+
+.label{
+    width:550rpx;
+    text-align: right;
+}
+

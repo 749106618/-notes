@@ -1,0 +1,89 @@
+.msg_top{
+    background-color: #fff;
+    margin-top: 24rpx;
+}
+.msg_top_item{
+    height: 119rpx;
+    display: flex;
+    align-items:center;
+    position: relative;
+}
+.msg_top_item .char{
+    font-size: 29rpx;
+    color: #48494A;
+    margin-left: 26rpx;
+    letter-spacing: 2rpx;
+}
+.msg_top_item .tag{
+    width: 100rpx;
+    height: 100rpx;
+    margin-left: 493rpx;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.msg_top_item .tag image{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.msg_top_item .icon2{
+    width: 32rpx;
+    height: 32rpx;
+    position: absolute;
+    right: 30rpx;
+    top: 45rpx;
+}
+.msg_top_item #czd{
+    margin-left: 72rpx;
+    width: 500rpx;
+}
+.line{
+    width: 727rpx;
+    height: 2rpx;
+    background-color: #EEEEEE;
+    position: absolute;
+    left: 23rpx;
+    bottom: 0;
+}
+
+.msg_top_item .info{
+    width: 595rpx;
+    font-size: 29rpx;
+    color: #888888;
+    text-align: right;
+    height: 118rpx;
+    line-height: 118rpx;
+}
+
+.intro{
+    background-color: #fff;
+    margin-top: 19rpx;
+}
+.intro textarea{
+    width: 724rpx;
+    padding-top: 32rpx;
+    padding-bottom: 230rpx;
+    padding-left: 26rpx;
+    color: #48494A;
+    font-size: 29rpx;
+}
+
+.placeholder{
+    font-size: 29rpx;
+    color: #CDCDCD;
+}
+
+.save-in{
+    width: 701rpx;
+    height: 91rpx;
+    border-radius: 50rpx;
+    background-color: #56D6CC;
+    color: #ffffff;
+    font-size: 37rpx;
+    text-align: center;
+    line-height: 91rpx;
+}
+.save{
+    padding: 59rpx 29rpx 109rpx;
+}

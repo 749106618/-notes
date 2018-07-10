@@ -1,0 +1,98 @@
+<view class="container">
+    <view class="search">
+        <input class="search_in" placeholder-style="color:#AAAAAA;font-size:24rpx" bindinput="content"
+               placeholder="搜索更多热门笔记"
+               auto-focus="true" adjust-position="true" value="{{content}}"
+        />
+        <image src="../../../icon/icon_search.png"></image>
+        <view class="btn" bindtap="search">搜索</view>
+    </view>
+    <view class="main">
+        <view class="item">
+            <view class="title">热门搜索</view>
+            <view wx:if="{{hotSearchHistory[0]}}" class="label">
+                <block wx:for="{{hotSearchHistory}}">
+                    <view data-content="{{item}}" bindtap="clickSearch">
+                        {{item}}
+                    </view>
+                </block>
+            </view>
+        </view>
+        <view class="item" style="margin-top: 50rpx">
+            <view class="title">历史记录</view>
+            <view wx:if="{{searchHistory[0]}}" class="label">
+                <block wx:for="{{searchHistory}}">
+                    <view wx:if="{{item}}" data-content="{{item}}" bindtap="clickSearch">
+                        {{item}}
+                    </view>
+                </block>
+            </view>
+        </view>
+        <view class="delete" bindtap="deleteSearchHistor">清除历史记录</view>
+        <view class="seam"></view>
+        <view wx:if="{{showSearchBox}}" class="search_content clearfix">
+            <view class="main_left">
+                 <view wx:for="{{noteList}}" wx:if="{{index%2==0}}"  class="c_item" >
+                        <navigator url="../../details/details?noteId={{item.noteId}}" hover-class="none">
+                            <view class="banner">
+                                <image src="{{item.imageList[0]}}" mode="widthFix"></image>
+                            </view>
+                            <view class="content">{{item.noteTitle}}</view>
+                            <view class="msg clearfix">
+                                <view class="left clearfix">
+                                    <navigator url="../personalHomePage/personalHomePage?userId={{item.userId}}"
+                                               hover-class="none">
+                                        <image class="head" src="{{item.userPhoto}}"></image>
+                                    </navigator>
+                                    <text class="name">{{item.userName}}</text>
+                                </view>
+                                <view class="right clearfix">
+                                    <image class="star" src="../../../icon/icon_conllection_nor.png"></image>
+                                    <text class="num">{{item.followNum}}</text>
+                                </view>
+                            </view>
+                        </navigator>
+                    </view>
+            </view>
+            <view class="main_right">
+                    <view wx:for="{{noteList}}"  wx:if="{{index%2==1}}" class="c_item" >
+                        <navigator url="../../details/details?noteId={{item.noteId}}" hover-class="none">
+                            <view class="banner">
+                                <image src="{{item.imageList[0]}}" mode="widthFix"></image>
+                            </view>
+                            <view class="content">{{item.noteTitle}}</view>
+                            <view class="msg clearfix">
+                                <view class="left clearfix">
+                                    <navigator url="../personalHomePage/personalHomePage?userId={{item.userId}}"
+                                               hover-class="none">
+                                        <image class="head" src="{{item.userPhoto}}"></image>
+                                    </navigator>
+                                    <text class="name">{{item.userName}}</text>
+                                </view>
+                                <view class="right clearfix">
+                                    <image class="star" src="../../../icon/icon_conllection_nor.png"></image>
+                                    <text class="num">{{item.followNum}}</text>
+                                </view>
+                            </view>
+                        </navigator>
+                    </view>
+            </view>
+            <view class='loading {{isData ? "show" : "hide"}}'>
+                <view class='loading-box'>
+                    <view></view>
+                    <view></view>
+                    <view></view>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{notData}}" class="search_content search_content_notNote">
+            <view class="notMsg">
+                <image src="../../../icon/pic_3.png"></image>
+            </view>
+            <view class="notMsg_bottom">没有搜索到相关笔记，换个词试试吧！</view>
+
+        </view>
+    </view>
+
+
+</view>

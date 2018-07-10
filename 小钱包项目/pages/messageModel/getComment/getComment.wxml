@@ -1,0 +1,44 @@
+<view class="container">
+    <block wx:if="{{CommentOrReply.length>0}}">
+        <block wx:for="{{CommentOrReply}}">
+            <navigator wx:if="{{item.correlationType==2}}"  url="../../detailsModel/replyList/replyList?commentId={{item.correlationId}}" hover-class="none">
+                <view class="praise clearfix">
+                    <image class="head" src="{{item.doUserPhoto}}"></image>
+                    <view class="info">
+                        <view class="top">{{item.doUserName}}</view>
+                        <view class="middle">{{item.leftContent}}</view>
+                        <view class="bottom">{{item.createTime}}</view>
+                    </view>
+                    <view class="p_right">{{item.rightContent?item.rightContent:''}}</view>
+                    <view class="line"></view>
+                </view>
+            </navigator>
+            <navigator wx:if="{{item.correlationType==1}}" url="../../details/details?noteId={{item.correlationId}}" hover-class="none">
+                <view class="praise clearfix">
+                    <image class="head" src="{{item.doUserPhoto}}"></image>
+                    <view class="info">
+                        <view class="top">{{item.doUserName}}</view>
+                        <view class="middle">{{item.leftContent}}</view>
+                        <view class="bottom">{{item.createTime}}</view>
+                    </view>
+                    <view class="p_right">{{item.rightContent?item.rightContent:''}}</view>
+                    <view class="line"></view>
+                </view>
+            </navigator>
+        </block>
+
+        <view class='loading {{isData ? "show" : "hide"}}'>
+            <view class='loading-box'>
+                <view></view>
+                <view></view>
+                <view></view>
+            </view>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="notMsg">
+            <image src="../../../icon/pic_2.png"></image>
+        </view>
+        <view class="notMsg_bottom">你没有收到评论和回复消息哦!</view>
+    </block>
+</view>

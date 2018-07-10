@@ -1,0 +1,41 @@
+<view class="container">
+    <view class="msg_top">
+        <navigator url="../messageModel/getPraise/getPraise" hover-class="none">
+            <view class="msg_top_item">
+                <image class="icon1" src="../../icon/icon_message1.png" mode="widthFix"></image>
+                <view class="char">收到的赞和收藏</view>
+                <view  wx:if="{{Notice.newFollowOrLikeNum>0}}" class="tag">{{Notice.newFollowOrLikeNum}}</view>
+                <image class="icon2" src="../../icon/icon_arrow1.png"></image>
+                <view class="line"></view>
+            </view>
+        </navigator>
+        <navigator url="../messageModel/getComment/getComment" hover-class="none">
+            <view class="msg_top_item">
+                <image class="icon1" src="../../icon/icon_message2.png" mode="widthFix"></image>
+                <view class="char">收到的评论和回复</view>
+                <view wx:if="{{Notice.newCommentOrReplyNum>0}}" class="tag tag1">{{Notice.newCommentOrReplyNum}}</view>
+                <image class="icon2" src="../../icon/icon_arrow1.png"></image>
+                <view class="line"></view>
+            </view>
+        </navigator>
+        <navigator url="../messageModel/getAttention/getAttention" hover-class="none">
+        <view class="msg_top_item">
+            <image class="icon1" src="../../icon/icon_message3.png" mode="widthFix"></image>
+            <view class="char">新增关注</view>
+            <view wx:if="{{Notice.newFansNum>0}}" class="tag tag2">{{Notice.newFansNum}}</view>
+            <image class="icon2" src="../../icon/icon_arrow1.png"></image>
+
+        </view>
+        </navigator>
+    </view>
+    <navigator url="../messageModel/getSystemInfo/getSystemInfo" hover-class="none">
+    <view class="msg_bottom">
+        <view class="msg_top_item">
+            <image class="icon1" src="../../icon/icon_message4.png" mode="widthFix"></image>
+            <view class="char">系统消息</view>
+            <view wx:if="{{Notice.newSystemNum>0}}" class="tag tag3">{{Notice.newSystemNum}}</view>
+            <image class="icon2" src="../../icon/icon_arrow1.png"></image>
+        </view>
+    </view>
+    </navigator>
+</view>

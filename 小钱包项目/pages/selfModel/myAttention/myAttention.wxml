@@ -1,0 +1,38 @@
+<view class="container">
+    <block wx:if="{{followList.length>0}}">
+        <block wx:for="{{followList}}">
+            <view class="praise clearfix">
+                <navigator url="../../personalHomePage/personalHomePage?userId={{item.id}}" hover-class="none">
+                    <image class="head" src="{{item.photo}}"></image>
+                </navigator>
+                <view class="info">
+                    <view class="top">
+                        <text class="txt1">{{item.nickName}}</text>
+                    </view>
+                </view>
+                <block wx:if="{{item.isFollow==1 || item.isFollow == null || item.id == myId }}">
+                    <view  class="p_right" bindtap="unfollow" data-id="{{item.id}}">
+                        已关注
+                    </view>
+                </block>
+                <block wx:else>
+                    <image class="p_right1" src="../../../icon/icon_follow.png" bindtap="Follow" data-id="{{item.id}}"></image>
+                </block>
+                <view class="line"></view>
+            </view>
+        </block>
+        <view class='loading {{isData ? "show" : "hide"}}'>
+            <view class='loading-box'>
+                <view></view>
+                <view></view>
+                <view></view>
+            </view>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="notMsg">
+            <image src="../../../icon/pic_1.png"></image>
+        </view>
+        <view class="notMsg_bottom">你还没有关注任何用户哦!</view>
+    </block>
+</view>

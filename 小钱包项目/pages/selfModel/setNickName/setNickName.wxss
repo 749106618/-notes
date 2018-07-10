@@ -1,0 +1,38 @@
+.main{
+    padding-left: 30rpx;
+    margin-top: 22rpx;
+    height: 98rpx;
+    font-size: 32rpx;
+    background-color: #fff;
+}
+.main_left{
+    float: left;
+    width: 81rpx;
+    line-height: 98rpx;
+    color: #2C2D2E;
+}
+.main_right{
+    width: 638rpx;
+    height: 98rpx;
+    float: left;
+}
+.main_right input{
+    font-size: 30rpx;
+    width: 100%;
+    height: 100%;
+    padding-top: 3rpx;
+    box-sizing: border-box;
+}
+
+.save{
+    width: 701rpx;
+    height: 91rpx;
+    border-radius: 50rpx;
+    background-color: #56D6CC;
+    color: #ffffff;
+    font-size: 37rpx;
+    text-align: center;
+    line-height: 91rpx;
+    margin: 0 auto;
+    margin-top: 59rpx;
+}

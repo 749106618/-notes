@@ -1,0 +1,61 @@
+<view class="container">
+    <block wx:if="{{SystemMessage.length>0}}">
+        <view wx:for="{{SystemMessage}}" class="observer">
+            <block wx:if="{{item.correlationType == 1 }}">
+                <image class="head" src="../../../icon/icon_message4.png"></image>
+                <view class="o_detail">
+                    <view class="top">{{item.type}}</view>
+                    <view class="middle">{{item.createTime}}</view>
+                </view>
+                <view class="reply">
+                    <block  wx:for="{{item.content}}" wx:for-item="conitem">
+                        <text wx:if="{{conitem.type == 2}}" style="color: #000;">{{conitem.content}}</text>
+                        <text wx:else>{{conitem.content}}</text>
+                    </block>
+                </view>
+            </block>
+            <block wx:if="{{item.correlationType == 2 }}">
+                <image class="head" src="../../../icon/icon_message4.png"></image>
+                <view class="o_detail">
+                    <view class="top">{{item.type}}</view>
+                    <view class="middle">{{item.createTime}}</view>
+                </view>
+                <view class="reply">
+                    <block  wx:for="{{item.content}}" wx:for-item="conitem">
+                        <text wx:if="{{conitem.type == 2}}" style="color: #000;">{{conitem.content}}</text>
+                        <text wx:else>{{conitem.content}}</text>
+                    </block>
+                </view>
+            </block>
+            <block wx:if="{{item.correlationType == 3}}" >
+                <image class="head" src="../../../icon/icon_message4.png"></image>
+                <view class="o_detail">
+                    <view class="top">{{item.type}}</view>
+                    <view class="middle">{{item.createTime}}</view>
+                </view>
+                <view class="reply" data-type="{{item.type}}"
+                      data-correlationid="{{item.correlationId}}">
+                    <block  wx:for="{{item.content}}" wx:for-item="conitem">
+                        <text wx:if="{{conitem.type == 2}}" style="color: #000;">{{conitem.content}}</text>
+                        <text wx:else>{{conitem.content}}</text>
+                    </block>
+                </view>
+
+            </block>
+        </view>
+        <view class='loading {{isData ? "show" : "hide"}}'>
+            <view class='loading-box'>
+                <view></view>
+                <view></view>
+                <view></view>
+            </view>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="notMsg">
+            <image src="../../../icon/pic_2.png"></image>
+        </view>
+        <view class="notMsg_bottom">你没有收到系统消息哦!</view>
+    </block>
+
+</view>

@@ -1,0 +1,9 @@
+<view class="container">
+    <view class="main clearfix">
+        <view class="main_left">昵称</view>
+        <view class="main_right">
+            <input type="text" bindinput="setNickName"  placeholder="请输入您的昵称" maxlength="{{maxlength}}" />
+        </view>
+    </view>
+    <view class="save" bindtap="save">保存</view>
+</view>

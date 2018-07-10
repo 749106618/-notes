@@ -1,0 +1,33 @@
+.select{
+    background-color: #fff;
+    margin-top: 18rpx;
+}
+.select_item{
+    height: 100rpx;
+    display: flex;
+    align-content: center;
+    line-height: 100rpx;
+    position: relative;
+}
+
+.select_item image{
+    width: 29rpx;
+    height: 29rpx;
+}
+
+.select_item .classify{
+    font-size: 30rpx;
+    color: #222222;
+    margin-left: 25rpx;
+}
+.select_item .i_arrows{
+    margin-left: 550rpx;
+}
+.select_item .line{
+    width: 725rpx;
+    height: 2rpx;
+    background-color: #EEEEEE;
+    position: absolute;
+    left: 25rpx;
+    bottom: 0;
+}

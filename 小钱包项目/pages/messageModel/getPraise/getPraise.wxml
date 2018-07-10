@@ -1,0 +1,46 @@
+<view class="container">
+    <block wx:if="{{LikeOrFollow.length>0}}">
+        <block wx:for="{{LikeOrFollow}}">
+            <navigator wx:if="{{item.correlationType==2}}"
+                       url="../../detailsModel/replyList/replyList?commentId={{item.correlationId}}" hover-class="none">
+                <view class="praise clearfix">
+                    <image class="head" src="{{item.doUserPhoto}}"></image>
+                    <view class="info">
+                        <view class="top">{{item.doUserName}}</view>
+                        <image wx:if="{{item.type == 1}}"  src="../../../icon/icon_Fabulous2_nor.png"></image><!--点赞-->
+                        <image wx:if="{{item.type == 2}}"  src="../../../icon/icon_conllection.png"></image><!--收藏-->
+                        <view class="bottom">{{item.createTime}}</view>
+                    </view>
+                    <view class="p_right"><text style="text-align-last:{{item.rightContent.length==18?'justify;':''}}">{{item.rightContent?item.rightContent:item.leftContent}}</text></view>
+                    <view class="line"></view>
+                </view>
+            </navigator>
+            <navigator wx:if="{{item.correlationType==1}}" url="../../details/details?noteId={{item.correlationId}}" hover-class="none">
+                <view class="praise clearfix">
+                    <image class="head" src="{{item.doUserPhoto}}"></image>
+                    <view class="info">
+                        <view class="top">{{item.doUserName}}</view>
+                        <image wx:if="{{item.type == 1}}"  src="../../../icon/icon_Fabulous2_nor.png"></image><!--点赞-->
+                        <image wx:if="{{item.type == 2}}"  src="../../../icon/icon_conllection.png"></image><!--收藏-->
+                        <view class="bottom">{{item.createTime}}</view>
+                    </view>
+                    <view class="p_right"><view style="text-align-last:{{item.rightContent.length==18?'justify;':''}}">{{item.rightContent?item.rightContent:item.leftContent}}</view></view>
+                    <view class="line"></view>
+                </view>
+            </navigator>
+        </block>
+        <view class='loading {{isData ? "show" : "hide"}}'>
+            <view class='loading-box'>
+                <view></view>
+                <view></view>
+                <view></view>
+            </view>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="notMsg">
+            <image src="../../../icon/pic_1.png"></image>
+        </view>
+        <view class="notMsg_bottom">你没有收到赞和消息哦!</view>
+    </block>
+</view>

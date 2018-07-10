@@ -1,0 +1,118 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="search">
+        <navigator url="../indexModel/search/search" hover-class="none">
+            <view class="search_in">搜索更多热门笔记
+                <image src="../../icon/icon_search.png"></image>
+            </view>
+        </navigator>
+        <navigator url="../message/message" hover-class="none">
+            <image class="msg" src="../../icon/icon_message.png"><view wx:if="{{isMsg}}" class="msg_in"></view></image>
+        </navigator>
+
+    </view>
+    <swiper class="banner" autoplay="true" indicator-dots="true" indicator-color="#FDFDFD"
+            indicator-active-color="#8C9C90" circular="true">
+        <block wx:for="{{bannerList}}">
+            <swiper-item>
+                <image src="{{item.url}}"  class="slide-image" bindtap="navigator" data-type="{{item.type}}"
+                       data-correlation="{{item.correlation}}" mode="widthFix" />
+            </swiper-item>
+
+        </block>
+    </swiper>
+    <view class="navbar">
+        <view class="nav_item">
+            <navigator url="../list/list?oneLevel=1&title=太太创业" hover-class="none">
+                <image src="../../icon/icon_homepage1.png"></image>
+                <view>太太创业</view>
+            </navigator>
+        </view>
+        <view class="nav_item">
+            <navigator url="../list/list?oneLevel=2&title=太太小店" hover-class="none">
+                <image src="../../icon/icon_homepage2.png"></image>
+                <view>太太小店</view>
+            </navigator>
+        </view>
+        <view class="nav_item">
+            <navigator url="../list/list?oneLevel=3&title=投资理财" hover-class="none">
+                <image src="../../icon/icon_homepage3.png"></image>
+                <view>投资理财</view>
+            </navigator>
+        </view>
+    </view>
+    <view class="main">
+        <view class="c_title">热门话题
+            <view class="before"></view>
+        </view>
+        <block wx:for="{{RecommendList}}">
+            <view class="c_item">
+                    <view class="i_userinfo clearfix">
+                        <navigator url="../personalHomePage/personalHomePage?userId={{item.userId}}" hover-class="none" hover-stop-propagation="123">
+                        <image class="head" src="{{item.userPhoto}}"></image>
+                        </navigator>
+                        <view class="details">
+                            <view class="name">{{item.userName}}</view>
+                            <view class="time">{{item.releaseTime?item.releaseTime:''}}</view>
+                        </view>
+                    </view>
+                <navigator url="../details/details?noteId={{item.noteId}}" hover-class="none">
+                    <view class="i_content">
+                        <view class="title">{{item.noteTitle}}</view>
+                        <view class="content">{{item.noteDetail}}</view>
+                    </view>
+                    <view class="i_footer clearfix">
+                        <view class="i_footer_left">
+                            <text>{{item.commentNum}} 回复</text>
+                            <text> · </text>
+                            <text>{{item.likeNum}} 点赞</text>
+                            <text> · </text>
+                            <text>{{item.followNum}} 收藏</text>
+                        </view>
+                        <image class="i_footer_right" src="../../icon/icon_labelhot.png"></image>
+                    </view>
+                    <view class="line"></view>
+                </navigator>
+            </view>
+        </block>
+        <view class='loading {{isData ? "show" : "hide"}}'>
+            <view class='loading-box'>
+                <view></view>
+                <view></view>
+                <view></view>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{isUnauthorized}}" class="modal-dd">
+        <view class="dd-content">
+            <view class="d-title">提示</view>
+            <view class="d-txt">
+                <text wx:if="{{canIUse}}">请授权登录</text>
+                <!--<text else>请升级微信版本</text>-->
+            </view>
+
+            <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="d-btn">确定
+            </button>
+        </view>
+    </view>
+</view>
+<view class="tabbar clearfix">
+    <view class="index">
+        <view>
+            <image src="../../icon/icon_homepage_pre.png"></image>
+            <view class="index_in">首页</view>
+        </view>
+    </view>
+    <view class="pulish">
+        <navigator url="../issue/issue" hover-class="none">
+            <image src="../../icon/icon_pulish.png"></image>
+        </navigator>
+    </view>
+    <view class="self" bindtap="navigate">
+        <view>
+            <image src="../../icon/icon_mine_nor.png"></image>
+            <view class="self_in" style="color:#AAAAAA">我的</view>
+        </view>
+
+    </view>
+</view>

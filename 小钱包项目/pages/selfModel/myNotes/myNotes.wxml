@@ -1,0 +1,80 @@
+
+    <block wx:if="{{NoteList.length>0}}">
+        <view class="main clearfix">
+            <view class="main_left">
+                <view wx:for="{{NoteList}}" wx:if="{{index%2==0}}" class="main_in">
+                    <view class="item"  >
+                        <navigator url="../../details/details?noteId={{item.noteId}}" hover-class="none">
+                            <view class="banner">
+                                <image src="{{item.imageList[0]}}" mode="widthFix" lazy-load="true"></image>
+                            </view>
+                            <view class="content">{{item.noteTitle?item.noteTitle:''}}</view>
+                            <view class="msg clearfix">
+                                <view class="left">
+                                    <image class="head" src="{{item.userPhoto}}" mode="scaleToFill"></image>
+                                    <text class="name">{{item.userName?item.userName:''}}</text>
+                                </view>
+                                <view class="right">
+                                    <image wx:if="{{item.followNum != null}}" class="star" src="../../../icon/icon_conllection_nor.png" mode="scaleToFill"></image>
+                                    <text class="num">{{item.followNum != null ? item.followNum:''}}</text>
+                                </view>
+                            </view>
+                        </navigator>
+                        <view wx:if="{{item.status==3}}" class='noPass'>
+                            <image class="img1" src="../../../icon/reject.png" mode="scaleToFill"></image>
+                            <navigator url="../editor/editor?noteId={{item.noteApplyId}}" hover-class="none">
+                                <image class="img2" src="../../../icon/123124.png" mode="scaleToFill"></image>
+                            </navigator>
+                        </view>
+                        <view wx:if="{{item.status==1}}" class='check_pending'>
+                            <image  src="../../../icon/123.png" mode="scaleToFill"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="main_right">
+                <view wx:for="{{NoteList}}" class="main_in" wx:if="{{index%2==1}}">
+                    <view class="item">
+                    <navigator url="../../details/details?noteId={{item.noteId}}" hover-class="none">
+                        <view class="banner">
+                            <image src="{{item.imageList[0]}}" mode="widthFix" lazy-load="true"></image>
+                        </view>
+                        <view class="content">{{item.noteTitle?item.noteTitle:''}}</view>
+                        <view class="msg clearfix">
+                            <view class="left">
+                                <image class="head" src="{{item.userPhoto}}" mode="scaleToFill"></image>
+                                <text class="name">{{item.userName?item.userName:''}}</text>
+                            </view>
+                            <view class="right">
+                                <image wx:if="{{item.followNum != null}}" class="star" src="../../../icon/icon_conllection_nor.png" mode="scaleToFill"></image>
+                                <text class="num">{{item.followNum != null ? item.followNum:''}}</text>
+                            </view>
+                        </view>
+                    </navigator>
+                    <view wx:if="{{item.status==3}}" class='noPass'>
+                        <image class="img1" src="../../../icon/reject.png" mode="scaleToFill"></image>
+                        <navigator url="../editor/editor?noteId={{item.noteApplyId}}" hover-class="none">
+                            <image class="img2" src="../../../icon/123124.png" mode="scaleToFill"></image>
+                        </navigator>
+                    </view>
+                    <view wx:if="{{item.status==1}}" class='check_pending'>
+                        <image  src="../../../icon/123.png" mode="scaleToFill"></image>
+                    </view>
+                </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="notMsg">
+            <image src="../../../icon/pic_4.png"></image>
+        </view>
+        <view class="notMsg_bottom">你还没有笔记哟！</view>
+    </block>
+    <view class='loading {{isData ? "show" : "hide"}}'>
+        <view class='loading-box'>
+            <view></view>
+            <view></view>
+            <view></view>
+        </view>
+    </view>

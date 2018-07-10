@@ -1,0 +1,212 @@
+/**index.wxss**/
+.container{
+    overflow: hidden;
+}
+.search{
+    width: 750rpx;
+    position: relative;
+    background-color: #fff;
+    padding: 0rpx 98rpx 19rpx 24rpx;
+    box-sizing: border-box;
+}
+.search .search_in{
+  width: 628rpx;
+  height: 56rpx;
+  border-radius: 142rpx;
+  color: #AAAAAA;
+  font-size: 24rpx;
+  padding-left: 68rpx;
+  line-height: 56rpx;
+  background-color: #EEEEEE;
+  position: relative;
+  box-sizing: border-box;
+}
+.search .search_in image{
+    width: 29rpx;
+    height: 29rpx;
+    position: absolute;
+    top: 15rpx;
+    left: 22rpx;
+}
+.search .msg{
+    width: 49rpx;
+    height: 49rpx;
+    position: absolute;
+    right: 24rpx;
+    top: 2rpx;
+}
+.search .msg .msg_in{
+    content: '';
+    width: 12rpx;
+    height: 12rpx;
+    background-color: #DC2B2D;
+    border-radius: 50%;
+    position: absolute;
+    top: 3rpx;
+    right: 0;
+}
+
+.banner{
+    width: 750rpx;
+    height: 317rpx;
+}
+.banner .slide-image{
+    width: 100%;
+    height: 100%;
+}
+
+.banner swiper-item{
+    display: flex;
+    align-items: center;
+}
+
+.navbar{
+    width: 100%;
+    height: 197rpx;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    border-bottom: 2rpx solid #EEEEEE;
+    background-color: #fff;
+}
+.nav_item{
+    flex: 1;
+    text-align:center;
+}
+.nav_item image{
+    width: 102rpx;
+    height: 116rpx;
+}
+.nav_item view{
+    font-size: 25rpx;
+    color: #222222;
+}
+
+
+.main{
+    padding-top: 31rpx;
+    background-color: #fff;
+    padding-bottom: 96rpx;
+}
+.c_title{
+    font-size: 36rpx;
+    color: #333333;
+    position: relative;
+    padding-left: 50rpx;
+    font-weight: 700;
+}
+
+.c_title .before{
+    height: 30rpx;
+    width: 4rpx;
+    background-color: #91DED8;
+    position: absolute;
+    bottom: 9rpx;
+    left:  24rpx;
+}
+
+.c_item{
+    margin: 30rpx 25rpx 0 24rpx;
+}
+
+.c_item .i_userinfo .head{
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 50%;
+    float: left;
+}
+.c_item .i_userinfo .details{
+    float: left;
+    margin-left: 15rpx;
+}
+.c_item .i_userinfo .details .name{
+    font-size: 30rpx;
+    color: #444444;
+}
+.c_item .i_userinfo .details .time{
+    font-size: 20rpx;
+    color: #ADADAD;
+}
+.c_item .i_content{
+    margin-top: 20rpx;
+}
+.c_item .i_content .title{
+    font-size: 33rpx;
+    color: #222222;
+    font-weight: 700;
+    word-break: break-all;
+    text-align: justify;
+}
+.c_item .i_content .content{
+    font-size: 25rpx;
+    color: #888888;
+    margin-top: 23rpx;
+    word-break: break-all;
+    text-align: justify;
+}
+.c_item .i_footer{
+    margin-top: 28rpx;
+}
+.c_item .i_footer .i_footer_left{
+    float: left;
+    line-height: 23rpx;
+}
+.c_item .i_footer .i_footer_left text{
+    font-size: 25rpx;
+    color: #888888;
+}
+.c_item .i_footer .i_footer_right{
+    float: right;
+    width: 80rpx;
+    height: 32rpx;
+}
+.c_item .line{
+    margin-top: 23rpx;
+    height: 2rpx;
+    background-color: #EEEEEE;
+}
+.modal-dd {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.dd-content {
+    margin: 0 auto;
+    width: 60%;
+    min-height: 200rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    margin-top: 40%;
+    position: relative;
+}
+
+.dd-content .d-title {
+    text-align: center;
+    padding: 32rpx 0;
+    font-size: 33rpx;
+    color: #333333;
+}
+
+.dd-content .d-txt {
+    text-align: left;
+    border-bottom: 1rpx solid #EEEEEE;
+    font-size: 30rpx;
+    color: #666;
+    text-align: center;
+    padding-bottom: 58rpx;
+}
+
+.d-btn {
+    background: none;
+    width: 100%;
+    color: #49D1BF;
+}
+
+
+
+

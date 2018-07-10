@@ -1,0 +1,106 @@
+<view class="container">
+    <view class="main">
+        <view class="head">
+            <view class="head_in">
+                <image src="{{userInfo.photo}}"></image>
+            </view>
+        </view>
+        <view class="nickName">{{userInfo.nickName}}</view>
+        <view class="editBox">
+            <view class="editBox_in">
+                <image wx:if="{{userInfo.isFollow==0 || userInfo.isFollow==null}}" src="../../icon/icon_follow.png" bindtap="followUser"></image>
+                <view wx:else bindtap="unfollow" data-id="{{userInfo.id}}">已关注</view>
+            </view>
+        </view>
+        <view class="tabBar clearfix">
+            <view class="tabbar_in">
+                <view class="tabBar_in">
+                    <navigator url="../selfModel/myAttention/myAttention?userId={{userInfo.id}}" hover-class="none">
+                        <view class="top">{{userInfo.followNum}}</view>
+                        <view class="bottom">关注</view>
+                        <view class="line"></view>
+                    </navigator>
+                </view>
+                <view class="tabBar_in">
+                    <navigator url="../selfModel/myFans/myFans?userId={{userInfo.id}}" hover-class="none">
+                        <view class="top">{{userInfo.fansNum}}</view>
+                        <view class="bottom">粉丝 </view>
+                        <view class="line"></view>
+                    </navigator>
+                </view>
+                <view class="tabBar_in">
+                        <view class="top">{{userInfo.noteLikedNum + userInfo.noteFollowedNum}}</view>
+                        <view class="bottom">获赞和收藏</view>
+                </view>
+            </view>
+            <view class="tabbar"></view>
+        </view>
+
+        <image class="bgc" src="../../icon/bg_mine.png"></image>
+    </view>
+    <view class="explain">{{userInfo.detail?userInfo.detail:""}}</view>
+    <view class="nav">
+        <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex"
+                     scroll-with-animation="true"
+                     scroll-left="left">
+            <view class="nav_item {{currentTab==1 ? 'on' : ''}}"
+                  bindtap="bindNavTab" data-current="1" data-id="{{userInfo.id}}">笔记 {{total1}}
+            </view>
+            <view class="nav_item {{currentTab==2 ? 'on' : ''}}"
+                  bindtap="bindNavTab" data-current="2" data-id="{{userInfo.id}}">收藏 {{total2}}
+            </view>
+
+        </scroll-view>
+    </view>
+    <view class="main_sall clearfix">
+        <view class="main_left">
+            <view wx:for="{{noteList}}" wx:if="{{index%2==0}}"  class="item" >
+                <navigator url="../details/details?noteId={{item.noteId}}" hover-class="none">
+                    <view class="banner">
+                        <image src="{{item.imageList[0]}}" mode="widthFix"></image>
+                    </view>
+                    <view class="content">{{item.noteTitle?item.noteTitle:''}}</view>
+                    <view class="msg">
+                        <view class="left">
+                            <image class="head_small" src="{{item.userPhoto}}"></image>
+                            <text class="name">{{item.userName}}</text>
+                        </view>
+                        <view class="right">
+                            <image class="star" src="../../icon/icon_conllection_nor.png"></image>
+                            <text class="num">{{item.followNum}}</text>
+                        </view>
+
+                    </view>
+                </navigator>
+            </view>
+        </view>
+        <view class="main_right">
+            <view wx:for="{{noteList}}"  wx:if="{{index%2==1}}" class="item" >
+                <navigator url="../details/details?noteId={{item.noteId}}" hover-class="none">
+                    <view class="banner">
+                        <image src="{{item.imageList[0]}}" mode="widthFix"></image>
+                    </view>
+                    <view class="content">{{item.noteTitle?item.noteTitle:''}}</view>
+                    <view class="msg">
+                        <view class="left">
+                            <image class="head_small" src="{{item.userPhoto}}"></image>
+                            <text class="name">{{item.userName}}</text>
+                        </view>
+                        <view class="right">
+                            <image class="star" src="../../icon/icon_conllection_nor.png"></image>
+                            <text class="num">{{item.followNum}}</text>
+                        </view>
+
+                    </view>
+                </navigator>
+            </view>
+        </view>
+        <view class='loading {{loading ? "show" : "hide"}}'>
+            <view class='loading-box'>
+                <view></view>
+                <view></view>
+                <view></view>
+            </view>
+        </view>
+    </view>
+</view>

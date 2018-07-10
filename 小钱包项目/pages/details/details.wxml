@@ -1,0 +1,192 @@
+<view class="container">
+    <swiper class="details_banner {{isAuto? 'is_auto': ''}}" indicator-dots="true" indicator-color="#FDFDFD"
+            indicator-active-color="#8C9C90" circular="true" bindchange="swiperChange" bindtap="hideReply">
+        <block wx:for="{{detail.imageList}}">
+            <swiper-item>
+                <image src="{{item}}" mode="widthFix" class="slide-image" bindtap="previewImg" data-src="{{item}}"/>
+            </swiper-item>
+        </block>
+    </swiper>
+    <!--帖子详情-->
+    <view class="content" bindtap="hideReply">
+        <view class="c_userinfo clearfix">
+            <navigator url="../personalHomePage/personalHomePage?userId={{detail.userId}}" hover-class="none">
+                <view class="left">
+                    <image src="{{detail.userPhoto}}"></image>
+                </view>
+            </navigator>
+
+            <view class="middle">
+                <view class="name">{{detail.userName}}</view>
+                <view class="time">{{detail.releaseTime?detail.releaseTime : ''}}</view>
+            </view>
+            <block wx:if="{{detail.userId != userInfo.id}}">
+                <image wx:if="{{isCollectUser==0}}" class="right" src="../../icon/icon_follow.png"
+                       data-userid="{{detail.userId}}" bindtap="isfollow"></image>
+                <view wx:else class="right" style="font-size: 27rpx;color: #999999;text-align: right">已关注</view>
+            </block>
+
+        </view>
+        <view class="c_main">
+            <view class="title clearfix">
+                <view class="left">{{detail.noteTitle}}</view>
+                <image wx:if="{{detail.isRecommend}}" class="right" src="../../icon/icon_labelhot.png"></image>
+            </view>
+            <view class="c_main_contetn">
+                <block wx:for="{{detail.noteDetail}}">
+                    <view class="c_main_contetn_in">{{item}}</view>
+                </block>
+            </view>
+
+        </view>
+    </view>
+    <!--评论-->
+    <view class="comment">
+        <view class="title clearfix" bindtap="hideReply">
+            <view class="left"></view>
+            <view class="middle">笔记评论</view>
+            <navigator url="../detailsModel/commentList/commentList?noteId={{detail.noteId}}&commentNum={{detail.commentNum}}"
+                    hover-class="none">
+                <view wx:if="{{CommentList.length}}" class="right">共 {{CommentList.length}} 条评论
+                    <image class="arrow_front" src="../../icon/icon_arrow.png"></image>
+                </view>
+            </navigator>
+
+        </view>
+        <!--用户头像 发送评论-->
+        <view class="self clearfix">
+            <image src="{{userInfo.photo}}"></image>
+            <view class="input" bindtap="showReply">我来说两句......</view>
+            <view class="line"></view>
+        </view>
+        <!--评论列表-->
+        <block wx:for="{{CommentList}}">
+            <navigator url="../detailsModel/replyList/replyList?commentId={{item.commentId}}&replyNum={{item.replyNum}}"
+                       hover-class="none">
+                <view class="observer" bindtap="hideReply">
+                    <image class="head" src="{{item.userPhoto}}" catchtap="navgitor" data-url="{{item.userId}}"></image>
+                    <view class="o_detail">
+                        <view class="top">{{item.userName }}</view>
+                        <view class="middle">{{item.content }}</view>
+                        <view class="bottom clearfix">
+                            <view class="bottom_time">{{item.createTime}}</view>
+                            <view class="bottom_right">
+                                    <text class="bottom_hf"  style="display:inline-block"  catchtap="navgitor2"
+                                          data-url="{{item.commentId}}&replyNum={{item.replyNum}}">回复</text>
+                                <image wx:if="{{item.isLike==0}}" class="bottom_img"
+                                       src="../../icon/icon_Fabulous1_nor.png" catchtap="likeComment"
+                                       data-id="{{item.commentId}}" data-index="{{index}}"></image>
+
+                                <image wx:if="{{item.isLike==1}}" data-index="{{index}}" class="bottom_img"
+                                       src="../../icon/icon_Fabulous1_pre.png" catchtap="likeComment"
+                                       data-id="{{item.commentId}}"></image>
+
+
+                                <text class="bottom_praise">{{item.likeNum}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <block wx:if="{{item.replyList}}">
+                        <view wx:for="{{item.replyList}}" class="reply" wx:for-item="replyItem">
+                            <text class="replier">{{replyItem.userName}}</text>
+                            <text class="reply_hf">回复</text>
+                            <text class="reply_observer">{{replyItem.parentUserName}}：</text>
+                            {{replyItem.content}}
+                                <view class="reply_bottom">
+                                    <text catchtap="navgitor2" data-url="{{item.commentId}}&replyNum={{item.replyNum}}">共 {{item.replyNum}} 条回复</text>
+                                    <image src="../../icon/icon_arrow_blue.png"></image>
+                                </view>
+
+                        </view>
+                    </block>
+                </view>
+            </navigator>
+        </block>
+        <navigator url="../detailsModel/commentList/commentList?noteId={{detail.noteId}}&commentNum={{detail.commentNum}}"
+                hover-class="none">
+            <view class="observer_all" wx:if="{{CommentList.length}}">查看全部 {{CommentList.length}} 条评论</view>
+        </navigator>
+    </view>
+    <!--相关帖子-->
+    <view class="relevant" bindtap="hideReply">
+        <navigator url="../detailsModel/RelatedNoteList/RelatedNoteList?noteId={{note_id}}" hover-class="none">
+            <view class="title clearfix">
+                <view class="left"></view>
+                <view class="middle">相关笔记</view>
+                <view class="right">查看更多</view>
+                <image class="arrow_front" src="../../icon/icon_arrow1.png"></image>
+            </view>
+        </navigator>
+        <view class="main clearfix">
+            <view class="main_left">
+                <view wx:for="{{RelatedNoteList}}" wx:if="{{index%2==0}}"  class="item">
+                    <navigator url="details?noteId={{item.noteId}}" hover-class="none">
+                        <view class="banner">
+                            <image src="{{item.imageList[0]}}" mode="widthFix"></image>
+                        </view>
+                        <view class="content_title">{{item.noteTitle}}</view>
+                        <view class="msg">
+                            <view class="left">
+                                <image class="head" src="{{item.userPhoto}}"></image>
+                                <text class="name">{{item.userName}}</text>
+                            </view>
+                            <view class="right">
+                                <image class="star" src="../../icon/icon_conllection_nor.png"></image>
+                                <text class="num">{{item.followNum}}</text>
+                            </view>
+
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+            <view class="main_right">
+                <view wx:for="{{RelatedNoteList}}"  wx:if="{{index%2==1}}" class="item">
+                    <navigator url="details?noteId={{item.noteId}}" hover-class="none">
+                        <view class="banner">
+                            <image src="{{item.imageList[0]}}" mode="widthFix"></image>
+                        </view>
+                        <view class="content_title">{{item.noteTitle}}</view>
+                        <view class="msg">
+                            <view class="left">
+                                <image class="head" src="{{item.userPhoto}}"></image>
+                                <text class="name">{{item.userName}}</text>
+                            </view>
+                            <view class="right">
+                                <image class="star" src="../../icon/icon_conllection_nor.png"></image>
+                                <text class="num">{{item.followNum}}</text>
+                            </view>
+
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="tabbar">
+        <view class="tabbar_item" bindtap="likeNote">
+            <image wx:if="{{isLike==1}}" src="../../icon/icon_Fabulous2_pre.png"></image>
+            <image wx:else src="../../icon/icon_Fabulous2_nor.png"></image>
+            <view class="txt_1">赞</view>
+            <view class="txt_2">{{detail.likeNum}}</view>
+        </view>
+        <view class="tabbar_item" bindtap="showReply">
+            <image src="../../icon/icon_critic12.png" style="margin-left: 40rpx"></image>
+            <view class="txt_1">评论</view>
+            <view class="txt_2">{{detail.commentNum}}</view>
+        </view>
+        <view class="tabbar_item" bindtap="isFollow">
+            <image wx:if="{{isFollow == 1}}" src="../../icon/icon_conllection_pre.png"
+                   style="margin-left: 40rpx"></image>
+            <image wx:else src="../../icon/icon_conllection_nor.png" style="margin-left: 40rpx"
+                   bindtap="collect"></image>
+
+            <view class="txt_1">收藏</view>
+            <view class="txt_2">{{detail.followNum}}</view>
+        </view>
+    </view>
+    <view class="sendReply" wx:if="{{isReply}}">
+        <input class="comment_in" type="text" placeholder="请输入你的评论" placeholder-style="placeholder"
+               bindinput="inputReply" focus="true" bindblur="hideReply"/>
+        <view class="send" bindtap="sendReply">发送</view>
+    </view>
+</view>

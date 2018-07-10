@@ -1,0 +1,12 @@
+<view class="container">
+    <view class="main">
+        <view class="top">
+            <image src="../../../icon/pic_succeed.png"></image>
+        </view>
+        <view class="middle">报名成功</view>
+        <view class="bottom">稍后工作人员会主动联系您</view>
+    </view>
+
+    <view class="back" bindtap="backIndex">返回首页</view>
+
+</view>

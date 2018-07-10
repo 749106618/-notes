@@ -1,0 +1,32 @@
+<view class="container">
+    <view class="title clearfix">
+        <view class="t_left">
+            <image src="{{activityDtail.image}}"></image>
+        </view>
+        <view class="t_right">
+            <view class="v1">{{activityDtail.title}}</view>
+            <view class="v2">活动费用
+                <text class="money">{{activityDtail.price/100}}</text>
+                元/人
+            </view>
+        </view>
+    </view>
+    <view class="s_title">填写您的信息</view>
+    <view class="info clearfix">
+        <view class="info_left">姓名</view>
+        <input class="info_right" type="text" placeholder="输入您的姓名" bindinput="inputUserName" />
+        <view class="line"></view>
+    </view>
+    <view class="info">
+        <view class="info_left">电话</view>
+        <input class="info_right" type="number" placeholder="输入您的电话" bindinput="inputMoblieNumber" maxlength="11" />
+    </view>
+    <view class="hint clearfix">
+        <view class="hint_left">
+            <image src="../../../icon/icon_cue.png"></image>
+        </view>
+        <view class="hint_right">提交报名后，会有工作人员主动联系您</view>
+    </view>
+     <view class="submit" bindtap="submit" >提交</view>
+
+</view>

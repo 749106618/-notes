@@ -1,0 +1,6 @@
+{
+  "enablePullDownRefresh": false,
+  "backgroundColor": "#fff",
+  "navigationBarTitleText": "系统通知",
+  "navigationBarTextStyle":"black"
+}

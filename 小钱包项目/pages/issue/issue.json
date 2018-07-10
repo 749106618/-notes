@@ -1,0 +1,6 @@
+{
+  "enablePullDownRefresh": false,
+  "backgroundColor": "#fff",
+  "navigationBarTitleText": "发布",
+  "navigationBarTextStyle":"black"
+}
