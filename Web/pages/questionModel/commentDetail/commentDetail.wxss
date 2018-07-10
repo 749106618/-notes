@@ -1,0 +1,145 @@
+/* pages/questionModel/answerDetail/answerDetail.wxss */
+page{
+    background-color: #FFF;
+}
+
+.ad{
+  width: 100%;
+}
+
+.ad-item{
+  width: 100%;
+  padding: 20rpx 0;
+  background-color: #FFF;
+  display: flex;
+}
+
+.ad-item-img{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 60rpx;
+  margin: 0 20rpx;
+  background-color: #EEE;
+}
+
+.ad-item-info{
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.ad-item-info-top{
+  width: 100%;
+  height: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ad-item-info-name{
+  font-size: 30rpx;
+  color: #111;
+}
+
+.ad-item-info-praise{
+  display: flex;
+  font-size: 30rpx;
+  color: #8E8E93;
+}
+
+.ad-item-info-praise-a{
+  color: #4B89F3!important;
+}
+
+.ad-item-info-praise-img{
+  width: 30rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+
+.ad-item-info-praise-img-a{
+  width: 30rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+
+.ad-item-info-middle{
+  font-size: 28rpx;
+  color: #4C4C4C;
+  line-height: 1.3;
+  margin-top: 10rpx;
+}
+
+.ad-item-info-bottom{
+  width: 100%;
+  height: 40rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.ad-item-info-time{
+  font-size: 22rpx;
+  color: #8E8E93;
+}
+
+.ad-item-info-answer{
+  font-size: 22rpx;
+  color: #8E8E93;
+  margin-left: 20rpx;
+}
+
+.ad-title{
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 30rpx;
+    color: #111;
+    text-indent: 30rpx;
+    background-color: #FFF;
+    margin-top: 2rpx;
+}
+
+.ad-content{
+    width: 100%;
+}
+
+.ad-praise{
+    width: 100%;
+    height: 120rpx;
+    background-color: #FFF;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.ad-praise-content{
+    width: 680rpx;
+    height: 60rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 2rpx solid #DDD;
+    margin: 28rpx auto;
+    background-color: #F4F5F6;
+    border-radius: 60rpx;
+}
+
+.ad-praise-img{
+    width: 40rpx;
+    height: 42rpx;
+    margin-left: 20rpx;
+}
+
+.ad-praise-input{
+    flex: 1;
+    height: 60rpx;
+    line-height: 60rpx;
+    margin-left: 10rpx;
+    font-size: 28rpx;
+    color: #999;
+}
+
+.common-view {
+    padding-bottom: 120rpx;
+}

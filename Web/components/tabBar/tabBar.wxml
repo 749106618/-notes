@@ -1,0 +1,30 @@
+<!-- tabBar -->
+<view class='tabBar'>
+    <!-- 答主 -->
+    <view wx:if='{{power}}' data-url='/pages/question/question' data-id='1' class='tabBar-item {{power ? "tabBar-item4" : "tabBar-item3"}}' bindtap='navigate'>
+        <image wx:if='{{tabBarId == 1}}' src='../../icons/icon-dazhu-s@2x.png' class='tabBar-img tabBar-img1'></image>
+        <image wx:else src='../../icons/icon-dazhu-n@2x.png' class='tabBar-img tabBar-img1'></image>
+        <view class='tabBar-text {{tabBarId == 1 ? "tabBar-text-active" : ""}}'>答主</view>
+    </view>
+    
+    <!-- 首页 -->
+    <view data-url='/pages/index/index' data-id='2' class='tabBar-item {{power ? "tabBar-item4" : "tabBar-item3"}}' bindtap='navigate'>
+        <image wx:if='{{tabBarId == 2}}' src='../../icons/common_tab_home_s@2x.png' class='tabBar-img tabBar-img2'></image>
+        <image wx:else src='../../icons/common_tab_home_n@2x.png' class='tabBar-img tabBar-img2'></image>
+        <view class='tabBar-text {{tabBarId == 2 ? "tabBar-text-active" : ""}}'>首页</view>
+    </view>
+    
+    <!-- 专家 -->
+    <view data-url='/pages/expert/expert' data-id='3' class='tabBar-item {{power ? "tabBar-item4" : "tabBar-item3"}}' bindtap='navigate'>
+        <image wx:if='{{tabBarId == 3}}' src='../../icons/common_tab_icon-s@2x.png' class='tabBar-img tabBar-img3'></image>
+        <image wx:else src='../../icons/common_tab_icon-n@2x.png' class='tabBar-img tabBar-img3'></image>
+        <view class='tabBar-text {{tabBarId == 3 ? "tabBar-text-active" : ""}}'>专家</view>
+    </view>
+    
+    <!-- 我的 -->
+    <view data-url='/pages/self/self' data-id='4' class='tabBar-item {{power ? "tabBar-item4" : "tabBar-item3"}}' bindtap='navigate'>
+        <image wx:if='{{tabBarId == 4}}' src='../../icons/common_tab_user_s@2x.png' class='tabBar-img tabBar-img4'></image>
+        <image wx:else src='../../icons/common_tab_user_n@2x.png' class='tabBar-img tabBar-img4'></image>
+        <view class='tabBar-text {{tabBarId == 4 ? "tabBar-text-active" : ""}}'>我的</view>
+    </view>
+</view>

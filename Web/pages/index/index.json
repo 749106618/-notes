@@ -1,0 +1,8 @@
+{
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "问答",
+    "backgroundColor": "#EFEFEF",
+    "usingComponents": {
+        "tabBar": "/components/tabBar/tabBar"
+    }
+}

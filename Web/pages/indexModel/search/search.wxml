@@ -1,0 +1,93 @@
+<!--pages/indexModel/search/search.wxml-->
+<view class='is'>
+    <view class='is-top'>
+        <view class='is-top-search'>
+            <image src='../../../icons/common_nav_search_n@2x.png' class='is-top-search-img'></image>
+            <input type='text' placeholder-class="phcolor" placeholder='搜索问答内容' class='is-top-search-input' value='{{searchParam.searchName}}' bindinput='getSearchName' bindfocus='getFocus' bindblur='getBlur'></input>
+        </view>
+        <view class='is-top-btn' bindtap='goSearch'>搜索</view>
+    </view>
+
+    <view wx:if='{{showSearchData}}' class='is-content'>
+        <view class='is-history'>
+            <view class='is-history-top'>
+                <view class='is-history-top-title'>搜索历史</view>
+                <view wx:if='{{searchHistory.length > 0}}' class='is-history-top-clear' bindtap='clearSearchHistory'>
+                    <image src='../../../icons/common_icon_delete_n@2x.png' class='is-history-top-clear-img'></image>
+                    清除历史
+                </view>
+            </view>
+            <view class='is-history-body'>
+                <block wx:for='{{searchHistory}}' wx:key='index' wx:item='item'>
+                    <view class='is-history-body-item' data-search_name='{{item}}' bindtap='goSearch'>{{item}}</view>
+                </block>
+                <block wx:if='{{searchHistory.length == 0}}'>
+                    <view class='is-history-body-null'>暂无搜索历史</view>
+                </block>
+            </view>
+        </view>
+
+        <view class='is-guess'>
+            <view class='is-guess-title'>猜你想要</view>
+            <view class='is-guess-body'>
+                <block wx:for='{{hostSearchList}}' wx:key='index' wx:item='item'>
+                    <view class='is-guess-body-item' data-search_name='{{item}}' bindtap='goSearch'>{{item}}</view>
+                </block>
+            </view>
+        </view>
+    </view>
+
+    <view wx:if='{{!showSearchData}}' class='is-content'>
+        <view class='is-content-title'>
+            <view class='is-content-title-num'>{{hostQuestionData.records}}条搜索结果</view>
+            <view class='is-content-title-text'>没有想要的...?</view>
+            <navigator url='/pages/questionModel/quiz/quiz' hover-class='none' class='is-content-title-btn'>去提问</navigator>
+        </view>
+        <view class='is-content-body'>
+            <block wx:for='{{hostQuestionData.rows}}' wx:key='index' wx:item='item'>
+                <view class='is-content-item'>
+                    <view class='is-content-item-top'>
+                        <navigator url='/pages/expertModel/expertDetail/expertDetail?expertId={{item.expertId}}' hover-class='none'>
+                            <image src='{{item.expertPhoto}}' class='is-content-item-top-img'></image>
+                        </navigator>
+                        <view class='is-content-item-top-name'>{{item.expertName}}</view>
+                        <view class='is-content-item-top-rank'>{{item.expertPost}}</view>
+                        <block wx:if='{{item.isCollectExpert == 1}}'>
+                            <view class='is-content-item-top-looked'>已关注</view>
+                        </block>
+                        <block wx:else>
+                            <view class='is-content-item-top-look' data-expert_id='{{item.expertId}}' bindtap='collectExpert'>
+                                <image src='../../../icons/home_icon_attention@2x.png' class='is-content-item-top-look-img'></image>
+                                关注
+                            </view>
+                        </block>
+                    </view>
+                    <navigator url='/pages/questionModel/detail/detail?questionId={{item.questionId}}' hover-class='none' class='is-content-item-body'>
+                        <view class='is-content-item-body-title'>{{item.questionTitle}}</view>
+                        <view class='is-content-item-body-text'>{{item.questionReasonText}}</view>
+                    </navigator>
+                    <view class='is-content-item-footer'>
+                        <view class='is-content-item-footer-time'>{{item.questionCreateTime}}</view>
+                        <view class='is-content-item-footer-agree-read'>
+                            <text>{{item.questionLikeNum}}赞同 · </text>
+                            <text>{{item.questionReadNum}}阅读</text>
+                        </view>
+                    </view>
+                </view>
+            </block>
+
+            <!-- no data -->
+            <view wx:if='{{hostQuestionData.rows.length == 0}}' class='no-data'>
+                <image src='../../../icons/common_icon@2x.png'></image>
+                <view>暂无更多数据~</view>
+            </view>
+        </view>
+        <view class='loading {{loading ? "show" : "hide"}}'>
+            <view class='loading-box'>
+                <view></view>
+                <view></view>
+                <view></view>
+            </view>
+        </view>
+    </view>
+</view>

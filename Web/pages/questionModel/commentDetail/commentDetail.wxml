@@ -1,0 +1,73 @@
+<!--pages/questionModel/answerDetail/answerDetail.wxml-->
+
+<view class='ad'>
+    <view class='ad-item'>
+        <image src='{{commentDetail.userPhoto}}' class='ad-item-img'></image>
+        <view class='ad-item-info'>
+            <view class='ad-item-info-top'>
+                <view class='ad-item-info-name'>{{commentDetail.userName}}</view>
+                <view data-comment_id='{{commentDetail.questionCommentId}}' data-type='1' bindtap='handelLikeComment' class='ad-item-info-praise {{commentDetail.isLike == 0 ? "" : "ad-item-info-praise-a"}}'>
+                    <image wx:if='{{commentDetail.isLike == 0}}' src='../../../icons/common_icon_like_n@2x.png' class='ad-item-info-praise-img'></image>
+                    <image wx:else src='../../../icons/common_icon_like_s@2x.png' class='ad-item-info-praise-img-a'></image>
+                    {{commentDetail.likeNum}}
+                </view>
+            </view>
+            <view class='ad-item-info-middle'>{{commentDetail.content}}</view>
+            <view class='ad-item-info-bottom'>
+                <view class='ad-item-info-time'>{{commentDetail.commentTimeCompute}}</view>
+                <view class='ad-item-info-answer'>{{commentDetail.replyNum}}回复</view>
+            </view>
+        </view>
+    </view>
+
+    <view wx:if='{{commentData.records != 0}}' class="common-view">
+        <view class='ad-title'>回复</view>
+        <view class='ad-content'>
+            <block wx:for='{{commentData.rows}}' wx:key='index' wx:item='item'>
+                <view class='ad-item'>
+                    <image src='{{item.userPhoto}}' class='ad-item-img'></image>
+                    <view class='ad-item-info'>
+                        <view class='ad-item-info-top'>
+                            <view class='ad-item-info-name'>{{item.userName}}</view>
+                            <view data-comment_id='{{item.questionCommentId}}' data-type='2' bindtap='handelLikeComment' class='ad-item-info-praise {{item.isLike == 0 ? "" : "ad-item-info-praise-a"}}'>
+                                <image wx:if='{{item.isLike == 0}}' src='../../../icons/common_icon_like_n@2x.png' class='ad-item-info-praise-img'></image>
+                                <image wx:else src='../../../icons/common_icon_like_s@2x.png' class='ad-item-info-praise-img-a'></image>
+                                {{item.likeNum}}
+                            </view>
+                        </view>
+                        <view class='ad-item-info-middle'>
+                            <block wx:for='{{item.contentArray}}' wx:key='index' wx:item='item'>
+                                <text wx:if='{{item.type == 1}}'>{{item.content}}</text>
+                                <text wx:else style="color: #4b89f3">{{item.content}}</text>
+                            </block>
+                        </view>
+                        <view class='ad-item-info-bottom'>
+                            <view class='ad-item-info-time'>{{item.commentTimeCompute}}</view>
+                            <view data-comment_id='{{item.questionCommentId}}' bindtap='focusComment' class='ad-item-info-answer'>{{item.replyNum}}回复</view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+
+            <!-- no data -->
+            <view wx:if='{{commentData.rows.length == 0}}' class='no-data'>
+                <image src='../../../icons/common_icon@2x.png'></image>
+                <view>暂无更多数据~</view>
+            </view>
+        </view>
+        <view class='loading {{loading ? "show" : "hide"}}'>
+            <view class='loading-box'>
+                <view></view>
+                <view></view>
+                <view></view>
+            </view>
+        </view>
+    </view>
+
+    <view class='ad-praise'>
+        <view class='ad-praise-content'>
+            <image src='../../../icons/common_icon_input_n@2x.png' class='ad-praise-img'></image>
+            <input type='text' placeholder-class="phcolor" cursor-spacing='10' confirm-type='done' class='ad-praise-input' placeholder='写回复' value='{{commentValue}}' confirm-type='发送' focus="{{commentFocus}}" bindconfirm='sendComment'></input>
+        </view>
+    </view>
+</view>

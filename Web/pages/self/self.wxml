@@ -1,0 +1,66 @@
+<!--pages/self/self.wxml-->
+<view class='self'>
+    <scroll-view scroll-y="true">
+        <view class='self-header'>
+            <image src='../../icons/common_bg_me@2x.png' class='self-header-down'></image>
+            <view class='self-header-up'>
+                <image src='{{userInfo.photo}}' class='self-header-img'></image>
+                <view class='self-header-name'>{{userInfo.nickName}}</view>
+
+                <block wx:if='{{userInfo.type == 2}}'>
+                    <view class='self-header-rank'>{{userInfo.expertCompany}} | {{userInfo.expertPost}}</view>
+                    <navigator url='../selfModel/applyExpert/applyExpert' hover-class='none'
+                               style="margin: {{userInfo.applyExpertStatus == 1 || userInfo.applyExpertStatus == 3? 30: 50}}rpx auto" class='self-header-update'><image src='../../icons/change.png'></image>修改认证信息</navigator>
+                </block>
+                <block wx:else>
+                    <view style="margin: {{userInfo.applyExpertStatus == 1 || userInfo.applyExpertStatus == 3? 30: 60}}rpx auto" class='self-header-nav'>
+                      <navigator url='../selfModel/applyExpert/applyExpert' hover-class='none' class='self-header-apply'>申请答主</navigator>
+                    </view>
+                </block>
+                <view wx:if="{{userInfo.applyExpertStatus == 1}}" style="color: red; font-size: 28rpx">认证中</view>
+                <view wx:if="{{userInfo.applyExpertStatus == 3}}" style="color: red; font-size: 28rpx">认证未通过</view>
+            </view>
+        </view>
+
+        <view class='self-nav'>
+            <navigator url='../selfModel/myQuestions/myQuestions' class='self-nav-item' hover-class='none'>
+                <view class='self-nav-item-num'>{{userInfo.questionNum}}</view>
+                <view class='self-nav-item-title'>我的提问</view>
+            </navigator>
+            <navigator url='../selfModel/problemCollect/problemCollect' class='self-nav-item' hover-class='none'>
+                <view class='self-nav-item-num'>{{userInfo.questionFollowNum}}</view>
+                <view class='self-nav-item-title'>问题收藏</view>
+            </navigator>
+            <navigator url='../selfModel/expertAttention/expertAttention' class='self-nav-item' hover-class='none'>
+                <view class='self-nav-item-num'>{{userInfo.expertFollowNum}}</view>
+                <view class='self-nav-item-title'>专家关注</view>
+            </navigator>
+        </view>
+
+        <view class='self-list'>
+            <navigator wx:if='{{userInfo.type == 2}}' url='../selfModel/myReason/myReason' class='self-list-item' hover-class='none'>
+                <view class='self-list-item-text'>我的回答</view>
+                <view class='self-list-item-num'>
+                    <image src='../../icons/arrow-right.png' class='arrow-right'></image>
+                </view>
+            </navigator>
+            <navigator wx:if='{{userInfo.type == 2}}' url='../selfModel/fans/fans' class='self-list-item' hover-class='none'>
+                <view class='self-list-item-text'>我的粉丝</view>
+                <view class='self-list-item-num'>
+                    <view wx:if='{{userInfo.newFansNum != 0}}'>+{{userInfo.newFansNum}}</view>
+                    <image src='../../icons/arrow-right.png' class='arrow-right'></image>
+                </view>
+            </navigator>
+            <navigator url='../selfModel/feedBack/feedBack' class='self-list-item' hover-class='none'>
+                <view class='self-list-item-text'>建议反馈</view>
+                <image src='../../icons/arrow-right.png' class='arrow-right'></image>
+            </navigator>
+            <navigator url='../selfModel/contactUs/contactUs' class='self-list-item' hover-class='none'>
+                <view class='self-list-item-text'>联系我们</view>
+                <image src='../../icons/arrow-right.png' class='arrow-right'></image>
+            </navigator>
+        </view>
+    </scroll-view>
+
+    <tabBar power='{{userInfo.type == 2}}' tabBarId='4'></tabBar>
+</view>

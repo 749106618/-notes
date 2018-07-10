@@ -1,0 +1,41 @@
+<!--pages/selfModel/newproveInfo/newproveInfo.wxml-->
+<view class='npi'>
+    <view wx:if='{{refuseReason}}' class='smpi-err'>
+        <image src='../../../icons/common_icon_msg@2x.png' class='smpi-err-img'></image>
+        <view class='smpi-err-text'>提示：{{refuseReason}}</view>
+        <view class='smpi-err-btn' bindtap='closeTip'>x</view>
+    </view>
+    <view class='npi-up-item' bindtap="uploadCardImg">
+        <block wx:if='{{!applyExpertInfo.cardImg}}'>
+            <view class='npi-item'>
+                <view class='npi-up-item-text'>点击名片正面（必传）</view>
+                <image src='../../../icons/add.png' class='npi-up-item-img'></image>
+            </view>
+        </block>
+        <block wx:else>
+            <image src='{{applyExpertInfo.cardImg}}' class='npi-up-item-pic'></image>
+        </block>
+    </view>
+    <view class='npi-up-item' bindtap="uploadCardImgOpposite">
+        <block wx:if='{{!applyExpertInfo.cardImgOpposite}}'>
+            <view class='npi-item'>
+                <view class='npi-up-item-text'>点击名片反面（选传）</view>
+                <image src='../../../icons/add.png' class='npi-up-item-img'></image>
+            </view>
+        </block>
+        <block wx:else>
+            <image src='{{applyExpertInfo.cardImgOpposite}}' class='npi-up-item-pic'></image>
+        </block>
+    </view>
+
+    <view wx:if='{{!tips}}' class='npi-tips'>温馨提示：材料审核需2个工作日</view>
+    <view wx:else class='npi-tips-im'>{{tips}}</view>
+
+    <checkbox-group bindchange='checkboxChange'>
+        <label class='npi-checkbox' wx:for='{{labelList}}' wx:key='index' wx:item='item'>
+            <checkbox color='#FFFFFF' checked="{{item.isChecked}}" value='{{item.labelId}}'></checkbox>{{item.labelName}}
+        </label>
+    </checkbox-group>
+
+    <view class='npi-btn' bindtap="submitApply">提交</view>
+</view>

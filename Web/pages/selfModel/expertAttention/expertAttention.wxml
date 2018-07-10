@@ -1,0 +1,31 @@
+<!--pages/selfModel/expertAttention/expertAttention.wxml-->
+<view class='smea'>
+    <view class='expert-content'>
+        <block wx:for='{{followExpertData.rows}}' wx:key='index' wx:item='item'>
+            <view class='smea-item {{item.isTouchMove ? "touch-move-active" : ""}}' data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+                <navigator url='/pages/expertModel/expertDetail/expertDetail?expertId={{item.expertId}}' hover-class="none" class='smea-item-nav'>
+                    <image src='{{item.expertPhoto}}' class='smea-item-img'></image>
+                    <view class='sema-item-info'>
+                        <view class='smea-item-info-name'>{{item.expertName}}</view>
+                        <view class='smea-item-info-rank'>{{item.expertPost}}</view>
+                        <view class='smea-item-info-content'>{{item.expertDetail}}</view>
+                    </view>
+                </navigator>
+                <view class='smea-item-remove' data-expert_id='{{item.expertId}}' data-index='{{index}}' bindtap='consoleFollowExpert'>取消关注</view>
+            </view>
+        </block>
+
+        <!-- no data -->
+        <view wx:if='{{followExpertData.records == 0}}' class='no-data'>
+            <image src='../../../icons/common_icon@2x.png'></image>
+            <view>暂无更多数据~</view>
+        </view>
+        <view class='loading {{loading ? "show" : "hide"}}'>
+            <view class='loading-box'>
+                <view></view>
+                <view></view>
+                <view></view>
+            </view>
+        </view>
+    </view>
+</view>

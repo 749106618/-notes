@@ -1,0 +1,18 @@
+<!--pages/selfModel/feedBack/feedBack.wxml-->
+<view class='smfb'>
+    <view class='smfb-title'>
+        <view class='text'>请留下联系方式</view>
+        <button open-type="contact" class='btn' hover-class="none">
+            <image src='../../../icons/custom@2x.png'></image>
+            <view>人工客服</view>
+        </button>
+    </view>
+    <input type='text' placeholder-class="phcolor" class='smfb-input' value='{{feedbackData.concatWay}}' placeholder='邮箱/手机号/微信号' bindinput='getConcatWay'></input>
+
+    <view class='smfb-title'>
+        <view class='text'>请留下您的宝贵意见</view>
+    </view>
+    <textarea placeholder='请输入...' placeholder-class="phcolor" value='{{feedbackData.content}}' class='smfb-textarea' bindinput='getContent'></textarea>
+
+    <view class='smfb-btn' bindtap='submit'>提交</view>
+</view>

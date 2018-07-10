@@ -1,0 +1,89 @@
+<!--pages/question/question.wxml-->
+<view class='question'>
+    <view class='qtabBar'>
+        <view class='qtabBar-item {{currentTab == 1 ? "qtabBar-item-active" : ""}}' data-id='1' bindtap='selectTab'>待回答{{waitReasonData.records > 0? '(' + waitReasonData.records + ')': ''}}
+            <text wx:if='{{expertNum.expertWaitReasonNum > 0}}'>新+{{expertNum.expertWaitReasonNum}}</text>
+        </view>
+        <view class='qtabBar-item {{currentTab == 2 ? "qtabBar-item-active" : ""}}' data-id='2' bindtap='selectTab'>问题广场
+            <text wx:if='{{expertNum.expertQuestionSquareReadNum > 0}}'>{{expertNum.expertQuestionSquareReadNum > 99 ? '99+' : expertNum.expertQuestionSquareReadNum}}</text>
+        </view>
+        <view class='qtabBar-item {{currentTab == 3 ? "qtabBar-item-active" : ""}}' data-id='3' bindtap='selectTab'>问答动态
+            <text wx:if='{{expertNum.expertNewMessageNum > 0}}'>{{expertNum.expertNewMessageNum}}评</text>
+        </view>
+    </view>
+
+    <view class='question-content'>
+        <block wx:if='{{currentTab == 1 && waitReasonData.rows.length > 0 && waitTip}}'>
+            <view class='wait-tip'>
+                <image src='../../icons/common_icon_msg@2x.png' class='wait-tip-img'></image>
+                <view class='wait-tip-text'>小提示：请在倒计时结束之前完成回答</view>
+                <view class='wait-tip-btn' bindtap='closeWaitTip'>x</view>
+            </view>
+        </block>
+        <block wx:if='{{currentTab == 1}}' wx:for='{{waitReasonData.rows}}' wx:key='index' wx:item='item'>
+            <view class='q-item1'>
+                <view class='q-item1-top'>
+                    <image src='{{item.userPhoto}}' class='q-item1-top-img'></image>
+                    <view class='q-item1-top-name'>{{item.userName}}</view>
+                    <view class='q-item1-top-time'>倒计时: 
+                        <view style='color: #ccc; display: inline'>{{item.questionReasonOverplusTime}}</view>
+                    </view>
+                </view>
+                <view class='q-item1-middle'>{{item.questionTitle}}</view>
+                <view class='q-item1-btn-box'>
+                    <view data-user_id='{{item.userId}}' data-question_id='{{item.questionId}}' data-question_title='{{item.questionTitle}}' data-question_detail='{{item.questionDetail}}' bindtap='toAnswerQuestion' class='q-item1-btn'>回答</view>
+                </view>
+            </view>
+        </block>
+        <!-- no data -->
+        <view wx:if='{{currentTab == 1 && waitReasonData.records == 0}}' class='no-data'>
+            <image  src='../../icons/common_icon@2x.png'></image>
+            <view>暂无更多数据~</view>
+        </view>
+
+        <block wx:if='{{currentTab == 2}}' wx:for='{{squareQuestionData.rows}}' wx:key='index' wx:item='item'>
+            <view class='q-item2'>
+                <view class='q-item2-top'>
+                    <image src='{{item.userPhoto}}' class='q-item2-top-img'></image>
+                    <view class='q-item2-top-name'>{{item.userName}}</view>
+                    <view class='q-item2-top-time'>倒计时: 
+                        <view style='color: #ccc; display: inline'>{{item.questionReasonOverplusTime}}</view>
+                    </view>
+                </view>
+                <view class='q-item2-middle'>{{item.questionTitle}}</view>
+                <view class='q-item2-btn-box'>
+                    <view data-user_id='{{item.userId}}' data-question_id='{{item.questionId}}' data-question_title='{{item.questionTitle}}' data-question_detail='{{item.questionDetail}}' bindtap='toAnswerQuestion' class='q-item1-btn'>回答</view>
+                </view>
+            </view>
+        </block>
+        <!-- no data -->
+        <view wx:if='{{currentTab == 2 && squareQuestionData.records == 0}}' class='no-data'>
+            <image  src='../../icons/common_icon@2x.png'></image>
+            <view>暂无更多数据~</view>
+        </view>
+
+        <block wx:if='{{currentTab == 3}}' wx:for='{{reasonMessageData.rows}}' wx:key='index' wx:item='item'>
+            <view bindtap='toMessageQuestionDetail' data-question_id="{{item.correlationId}}" data-message_id="{{item.messageId}}" hover-class='none' class='q-item3'>
+                <block wx:for='{{item.contentArray}}' wx:key='index' wx:item='item'>
+                    <text wx:if='{{item.type == 1}}'>{{item.content}}</text>
+                    <text wx:else style="color: #4b89f3">{{item.content}}</text>
+                </block>
+            </view>
+        </block>
+        <!-- no data -->
+        <view wx:if='{{currentTab == 3 && reasonMessageData.records == 0}}' class='no-data'>
+            <image  src='../../icons/common_icon@2x.png'></image>
+            <view>暂无更多数据~</view>
+        </view>
+
+        <view class='loading {{loading ? "show" : "hide"}}'>
+            <view class='loading-box'>
+                <view></view>
+                <view></view>
+                <view></view>
+            </view>
+        </view>
+    </view>
+
+    <tabBar power='{{userInfo.type == 2}}' tabBarId='1'></tabBar>
+</view>

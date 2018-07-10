@@ -1,0 +1,33 @@
+<!--pages/selfModel/problemCollect/problemCollect.wxml-->
+<view class='smpc'>
+    <view class='expert-content'>
+        <block wx:for='{{questionData.rows}}' wx:key='index' wx:item='item'>
+            <view class='i-content-item'>
+                <navigator url='/pages/questionModel/detail/detail?questionId={{item.questionId}}' hover-class='none' class='i-content-item-body'>
+                    <view class='i-content-item-body-title'>{{item.questionTitle}}</view>
+                    <view class='i-content-item-body-text'>{{item.questionReasonText}}</view>
+                </navigator>
+                <view class='i-content-item-footer'>
+                    <view class='i-content-item-footer-time'>{{item.questionReasonTimeInterval}}</view>
+                    <view class='i-content-item-footer-agree-read'>
+                        <text>{{item.questionLikeNum}}赞同 · </text>
+                        <text>{{item.questionReadNum}}阅读</text>
+                    </view>
+                </view>
+            </view>
+        </block>
+
+        <!-- no data -->
+        <view wx:if='{{questionData.records == 0}}' class='no-data'>
+            <image src='../../../icons/common_icon@2x.png'></image>
+            <view>暂无更多数据~</view>
+        </view>
+        <view class='loading {{loading ? "show" : "hide"}}'>
+            <view class='loading-box'>
+                <view></view>
+                <view></view>
+                <view></view>
+            </view>
+        </view>
+    </view>
+</view>

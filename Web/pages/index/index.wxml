@@ -1,0 +1,124 @@
+<!--pages/index/index.wxml-->
+<view class='index'>
+    <view class='i-navBar'>
+        <navigator url='/pages/questionModel/quiz/quiz' hover-class='none' class='i-nav'>
+            <image src='../../icons/home_icon_question@2x.png' class='i-nav-img'></image>
+            提问
+        </navigator>
+        <navigator url='/pages/indexModel/search/search' hover-class='none' class='i-nav'>
+            <image src='../../icons/home_icon_search@2x.png' class='i-nav-img'></image>
+            搜索
+        </navigator>
+    </view>
+
+    <block wx:if='{{messageList.length != 0}}'>
+        <view class='i-title'>
+            <view class='i-title-text'>
+                <view class='i-title-line'></view>通知</view>
+            <view class='i-title-tip'>新+{{messageList.length}}</view>
+        </view>
+        <!-- <scroll-view scroll-x style='height:100px;' class='i-scroll'>
+            <block wx:for='{{messageList}}' wx:key='index' wx:item='item'>
+                <view data-correlation_id='{{item.correlationId}}' data-message_id='{{item.messageId}}' data-notice_type='{{item.noticeType}}' data-index='{{index}}' bindtap='goNoticeDetail' class='i-scroll-item'>
+                    <view class='i-scroll-item-state {{item.noticeType == 1 ? "i-scroll-item-state-yes" : "i-scroll-item-state-no"}}'>{{item.noticeType == 1 ? '您的问题被回答' : '您的问题未过审核'}}</view>
+                    <view class='i-scroll-item-title'>{{item.content}}</view>
+                    <view class='i-scroll-item-time'>{{item.createTime}}</view>
+                </view>
+            </block>
+        </scroll-view> -->
+        <swiper class='i-scroll' next-margin='50rpx' >
+            <block wx:for='{{messageList}}' wx:key='index' wx:item='item'>
+                <swiper-item data-correlation_id='{{item.correlationId}}' data-message_id='{{item.messageId}}' data-notice_type='{{item.noticeType}}' data-index='{{index}}' bindtap='goNoticeDetail'>
+                    <view class='i-scroll-item'>
+                        <view class='i-scroll-item-state {{item.noticeType == 1 ? "i-scroll-item-state-yes" : "i-scroll-item-state-no"}}'>{{item.noticeType == 1 ? '您的问题被回答' : '您的问题未过审核'}}</view>
+                        <view class='i-scroll-item-title'>{{item.content}}</view>
+                        <view class='i-scroll-item-time'>{{item.createTime}}</view>
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </block>
+
+    <view class='i-title'>
+        <view class='i-title-text'>
+            <view class='i-title-line'></view>{{ceilingType[currentCeiling]}}</view>
+    </view>
+
+    <!-- 吸顶通知 start -->
+    <!-- 吸顶通知  end  -->
+
+    <view class='i-content' style="min-height: {{questionMinHeight}}px">
+        <view class='i-container'>
+            <!-- 新数据 -->
+            <block wx:for='{{questionList}}' wx:key='index' wx:item='item'>
+                <view class='i-content-item'>
+                    <view class='i-content-item-top'>
+                        <navigator url='/pages/expertModel/expertDetail/expertDetail?expertId={{item.expertId}}' hover-class='none'>
+                            <image src='{{item.expertPhoto}}' class='i-content-item-top-img'></image>
+                        </navigator>
+                        <view class='i-content-item-top-name'>{{item.expertName}}</view>
+                        <view class='i-content-item-top-rank'>{{item.expertPost}}</view>
+                        <!-- 关注 -->
+                        <block wx:if='{{currentCeiling == 0}}'>
+                            <view class='i-content-item-top-look'>回答了提问</view>
+                        </block>
+                        <block wx:else>
+                            <view wx:if='{{item.isCollectExpert == 1}}' class='i-content-item-top-looked'>已关注</view>
+                            <view data-expert_id='{{item.expertId}}' bindtap='expertCollect' wx:else class='i-content-item-top-look'>
+                                <image src='../../icons/home_icon_attention@2x.png' class='i-content-item-top-look-img'></image>
+                                关注
+                            </view>
+                        </block>
+                    </view>
+                    <navigator url='/pages/questionModel/detail/detail?questionId={{item.questionId}}' hover-class='none' class='i-content-item-body'>
+                        <view class='i-content-item-body-title'>{{item.questionTitle}}</view>
+                        <view class='i-content-item-body-text'>{{item.questionReasonText}}</view>
+                    </navigator>
+                    <view class='i-content-item-footer'>
+                        <view class='i-content-item-footer-time'>{{item.questionReasonTimeInterval}}</view>
+                        <view class='i-content-item-footer-agree-read'>
+                            <text>{{item.questionLikeNum}}赞同 · </text>
+                            <text>{{item.questionReadNum}}阅读</text>
+                        </view>
+                    </view>
+                </view>
+            </block>
+
+            <!-- no data -->
+            <view wx:if='{{questionList.length == 0}}' class='no-data'>
+                <image src='../../icons/common_icon@2x.png'></image>
+                <view>暂无更多数据~</view>
+            </view>
+        </view>
+        <view class='loading {{loading ? "show" : "hide"}}'>
+            <view class='loading-box'>
+                <view></view>
+                <view></view>
+                <view></view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 吸顶 -->
+    <view wx:if='{{ceiling}}' class='ceiling'>
+        <view class='ceiling-tag'>
+            <block wx:for='{{ceilingType}}' wx:key='index' wx:item='item'>
+                <view class='ceiling-item {{currentCeiling == index ? "ceiling-item-active" : ""}}' data-index='{{index}}' bindtap='selectType'>{{item}}</view>
+            </block>
+        </view>
+        <image src='../../icons/common_nav_update_n@2x.png' class='ceiling-load {{loadAnimation ? "loadMore" : ""}}' bindtap='reflash'></image>
+    </view>
+    <view wx:if="{{isUnauthorized}}" class="modal-dd">
+        <view class="dd-content">
+            <view class="d-title">提示</view>
+            <view class="d-txt">
+                <text wx:if="{{canIUse}}">请授权登录</text>
+                <!--<text else>请升级微信版本</text>-->
+            </view>
+
+            <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="d-btn">确定</button>
+        </view>
+    </view>
+    <tabBar power='{{userInfo.type == 2}}' tabBarId='2'></tabBar>
+
+</view>

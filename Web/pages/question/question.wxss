@@ -1,0 +1,146 @@
+/* pages/question/question.wxss */
+
+.question {
+    width: 100%;
+}
+
+.qtabBar {
+    width: 100%;
+    height: 80rpx;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    margin-bottom: 2rpx;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10; 
+}
+
+.qtabBar-item {
+    width: 33.33%;
+    font-size: 30rpx;
+    color: #111;
+    text-align: center;
+    line-height: 80rpx;
+}
+
+.qtabBar-item text {
+    font-size: 20rpx;
+    color: #f44a39 !important;
+    position: absolute;
+    top: -20rpx;
+}
+
+.qtabBar-item-active {
+    color: #4b89f3;
+    border-bottom: 2rpx solid #4b89f3;
+}
+
+.question-content{
+    padding: 82rpx 0 98rpx 0;
+}
+
+.q-item1, .q-item2 {
+    width: 92%;
+    padding: 30rpx 4%;
+    background-color: #fff;
+    margin-bottom: 2rpx;
+}
+
+.q-item1-top, .q-item2-top {
+    width: 100%;
+    height: 60rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.q-item1-top-img, .q-item2-top-img {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 60rpx;
+    background-color: #eee;
+}
+
+.q-item1-top-name, .q-item2-top-name {
+    flex: 1;
+    margin-left: 20rpx;
+    font-size: 30rpx;
+    color: #111;
+}
+
+.q-item1-top-time, .q-item2-top-time {
+    font-size: 22rpx;
+    color: #f44a39;
+}
+
+.q-item1-middle, .q-item2-middle {
+    width: 100%;
+    padding: 20rpx 0;
+    line-height: 1.4;
+    font-size: 32rpx;
+    color: #111;
+    font-weight: bold;
+}
+
+.q-item1-btn-box, .q-item2-btn-box {
+    width: 100%;
+    height: 52rpx;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.q-item1-btn, .q-item2-btn {
+    width: 110rpx;
+    height: 52rpx;
+    text-align: center;
+    line-height: 52rpx;
+    background-color: #4b89f3;
+    font-size: 28rpx;
+    color: #fff;
+    border-radius: 52rpx;
+}
+
+.q-item3 {
+    width: 92%;
+    padding: 20rpx 4%;
+    background-color: #fff;
+    margin-bottom: 2rpx;
+    line-height: 1.3;
+    font-size: 32rpx;
+    color: #111;
+}
+
+.wait-tip {
+    width: 100%;
+    height: 60rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.wait-tip-img {
+    width: 36rpx;
+    height: 36rpx;
+    border-radius: 36rpx;
+    margin: 0 30rpx;
+}
+
+.wait-tip-text {
+    flex: 1;
+    font-size: 26rpx;
+    color: #fff;
+}
+
+.wait-tip-btn {
+    width: 60rpx;
+    height: 60rpx;
+    text-align: center;
+    line-height: 60rpx;
+    font-size: 40rpx;
+    color: #111;
+    margin-right: 20rpx;
+}

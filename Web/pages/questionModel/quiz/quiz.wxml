@@ -1,0 +1,13 @@
+<!--pages/questionModel/quiz/quiz.wxml-->
+<view class='qq'>
+  <form bindsubmit="submit">
+    <view class='qq-title'>输入问题 <text>(必填，50字以内)</text></view>
+    <input type='text' placeholder-class="phcolor" name="questionTitle" disabled="{{isDisabled}}" class='qq-input' placeholder='示例：月薪1万～1.5万应该怎么理财？' value='{{submitParam.questionTitle}}'></input>
+
+    <view class='qq-title'>问题描述 <text>(选填，200字以内)</text></view>
+    <textarea class='qq-textarea' placeholder-class="phcolor" name="questionDetail" disabled="{{isDisabled}}" value='{{submitParam.questionDetail}}' placeholder='示例：本人一个月平均消费1000，目前无房贷、车贷。刚结婚，目前两年内没有打算要孩子，在乡下有房子，每月支出4500给家庭补贴，本人365天无聚会，剩余的钱要怎么安排，不想存银行。' maxlength='500'></textarea>
+
+    <button wx:if="{{isDisabled == false}}" form-type="submit" class='answer-btn'>提交</button>
+  </form>
+
+</view>

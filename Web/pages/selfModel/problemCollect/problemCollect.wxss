@@ -1,0 +1,85 @@
+/* pages/selfModel/problemCollect/problemCollect.wxss */
+.smpc{
+    width: 100%;
+}
+
+.smpc-item{
+    width: 92%;
+    padding: 30rpx 4%;
+    margin-bottom: 2rpx;
+    background-color: #FFF;
+}
+
+.smpc-item-info{
+    width: 100%;
+    height: 80rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.smpc-item-info-user{
+    display: flex;
+}
+
+.smpc-item-info-img{
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 60rpx;
+}
+
+.smpc-item-info-name{
+    font-size: 30rpx;
+    color: #111;
+    margin: 0 20rpx;
+    line-height: 80rpx;
+}
+
+.smpc-item-info-rank{
+    font-size: 22rpx;
+    color: #8E8E93;
+    line-height: 80rpx;
+}
+
+.smpc-item-info-looked{
+    font-size: 28rpx;
+    color: #999;
+    line-height: 80rpx;
+}
+
+.smpc-item-info-nolook{
+    display: flex;
+    font-size: 28rpx;
+    color: #4B89F3;
+    line-height: 80rpx;
+    align-items: center;
+}
+
+.smpc-item-info-nolook image{
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 10rpx;
+    display: inline-block;
+}
+
+.smpc-item-content{
+    font-size: 28rpx;
+    color: #4C4C4C;
+    line-height: 1.3;
+    letter-spacing: -0.47px;
+}
+
+.smpc-item-state{
+    margin-top: 10rpx;
+    width: 100%;
+    height: 40rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.smpc-item-time, .smpc-item-read{
+    font-size: 22rpx;
+    color: #8E8E93;
+    letter-spacing: -0.55px;
+}

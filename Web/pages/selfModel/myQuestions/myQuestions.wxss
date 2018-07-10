@@ -1,0 +1,60 @@
+/* pages/selfModel/myQuestions/myQuestions.wxss */
+.smmq{
+    width: 100%;
+}
+
+.smmq-item{
+    width: 92%;
+    padding: 20rpx 4%;
+    margin-bottom: 2rpx;
+    background-color: #FFF;
+}
+
+.smmq-item-text{
+    font-size: 30rpx;
+    color: #111;
+    line-height: 1.3;
+    letter-spacing: -0.44px;
+    font-weight: bold;
+}
+
+.smmq-item-info{
+    height: 40rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20rpx;
+}
+
+.smmq-item-time{
+    font-size: 22rpx;
+    color: #8E8E93;
+    letter-spacing: -0.55px;
+}
+
+.smmq-item-state{
+    font-size: 30rpx;
+    color: #F44A39;
+    letter-spacing: -0.44px;
+    display: flex;
+}
+
+.smmq-item-state-ok{
+    color: #4B89F3;
+}
+
+.smmq-item-state-btn{
+    width: 120rpx;
+    height: 50rpx;
+    text-align: center;
+    line-height: 50rpx;
+    background-color: #4B89F3;
+    font-size: 24rpx;
+    color: #FFF; 
+    border-radius: 4rpx;
+    margin-left: 20rpx;
+}
+
+.smmq-item-state-btn-gray {
+    background-color: #BABABA;
+}

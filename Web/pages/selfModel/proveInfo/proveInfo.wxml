@@ -1,0 +1,45 @@
+<!--pages/selfModel/proveInfo/proveInfo.wxml-->
+<view class='smpi'>
+
+    <view class='smpi-item'>
+        <view class='smpi-item-text'>名字</view>
+        <input type='text' placeholder-class="phcolor" disabled="true" class='smpi-item-input' value='{{expertInfo.expertName}}' bindinput='getExpertName' placeholder='请输入内容' maxlength='20'></input>
+    </view>
+    
+    <view class='smpi-item'>
+        <view class='smpi-item-text'>手机号</view>
+        <input type='number' placeholder-class="phcolor" disabled="true" class='smpi-item-input' value='{{expertInfo.expertMobile}}' bindinput='getExpertMobile' placeholder='请输入内容' maxlength='11'></input>
+    </view>
+
+    <!--<view class='smpi-item'>
+        <view class='smpi-item-text'>验证码</view>
+        <input type='number' placeholder-class="phcolor" class='smpi-item-inputqr' bindinput='getMobileCode' placeholder='请输入验证码' maxlength='6'></input>
+        <button disabled='{{qrObj.qrDisabled}}' class='smpi-item-btn {{qrObj.qrDisabled ? "smpi-item-btn-gray" : ""}}' bindtap='loadMobileCode'>{{qrObj.qrText}}</button>
+    </view>-->
+
+    <view class='smpi-item'>
+        <view class='smpi-item-text'>工作邮箱</view>
+        <input type='text' placeholder-class="phcolor" disabled="true" class='smpi-item-input' value='{{expertInfo.expertEmail}}' bindinput='getExpertEmail' placeholder='选填'></input>
+    </view>
+
+    <view class='smpi-item'>
+        <view class='smpi-item-text'>公司</view>
+        <input type='text' placeholder-class="phcolor" disabled="true" class='smpi-item-input' value='{{expertInfo.expertCompany}}' bindinput='getExpertCompany' placeholder='请输入内容' maxlength='50'></input>
+    </view>
+    
+    <view class='smpi-item'>
+        <view class='smpi-item-text'>职务</view>
+        <input type='text' placeholder-class="phcolor" disabled="true" cursor-spacing='10' class='smpi-item-input' value='{{expertInfo.expertPost}}' bindinput='getExpertPost' placeholder='请输入内容' maxlength='50'></input>
+    </view>
+    
+    <view class='smpi-item' style="height: auto">
+        <view class='smpi-item-text'>简介<view class='smpi-item-text-blue'>(140字以内)</view></view>
+        <textarea type='text' placeholder-class="phcolor" disabled="true" class='smpi-item-textarea' value='{{expertInfo.expertDetail}}' bindinput='getExpertDetail' placeholder='请输入简介' maxlength='2000'></textarea>
+    </view>
+
+    <view class='smpi-up-item'>
+        <view class='smpi-up-item-text'>上传名片（小于2M）</view>
+        <image src='{{expertInfo.expertCardImg}}' class='smpi-up-img' bintap="uploadExpertPhoto"></image>
+    </view>
+    
+</view>

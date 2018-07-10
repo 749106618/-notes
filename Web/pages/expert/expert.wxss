@@ -1,0 +1,159 @@
+/* pages/expert/expert.wxss */
+page{
+    background-color: #FFF;
+}
+
+.expert{
+    width: 100%;
+}
+
+.expert-navBar{
+    width: 100%;
+    height: 80rpx;
+    background-color: #FFF;
+    border-bottom: 2rpx solid #EFEFEF;
+    display: flex; 
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10; 
+}
+
+.expert-navBar-img{
+    width: 44rpx;
+    height: 44rpx;
+    margin: auto 30rpx;
+}
+
+.expert-navBar-item{
+    width: 80rpx;
+    text-align: center;
+    line-height: 80rpx;
+    margin-right: 30rpx;
+    font-size: 36rpx;
+    color: #111;
+}
+
+.expert-navBar-item-active{
+    color: #4B89F3!important;
+}
+
+.expert-content{
+    padding: 82rpx 0 98rpx 0;
+}
+
+.expert-item{
+    width: 92%;
+    height: 140rpx;
+    padding: 20rpx 4%;
+    margin-bottom: 2rpx;
+    background-color: #FFF;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2rpx solid #EFEFEF;
+}
+
+.expert-item-img{
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 120rpx;
+    margin-right: 30rpx;
+}
+
+.expert-item-info{
+    flex: 1;
+}
+
+.expert-item-info-name{
+    font-size: 30rpx;
+    color: #111;
+    letter-spacing: -0.5px;
+    margin-top: 10rpx;
+}
+
+.expert-item-info-rank{
+    font-size: 24rpx;
+    color: #838383;
+    letter-spacing: -0.4px;
+    margin-top: 10rpx;
+}
+
+.expert-item-info-content{
+    font-size: 24rpx;
+    color: #838383;
+    letter-spacing: -0.4px;
+    max-width: 405rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 10rpx 0;
+}
+
+.expert-item-info-looked{
+    font-size: 28rpx;
+    color: #999;
+    line-height: 80rpx;
+}
+
+.expert-item-info-look{
+    font-size: 28rpx;
+    color: #4B89F3;
+    display: flex;
+    align-items: center;
+    margin-top: -40rpx;
+}
+
+.expert-item-info-look image{
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 10rpx; 
+    display: inline-block;
+}
+
+/* 搜索面板 */
+.expert-searchBar{
+    display: table;
+    width: 100%;
+    height: 80rpx;
+    align-items: center;
+}
+
+.expert-searchBar-operate{
+    width: 540rpx;
+    height: 60rpx;
+    border-radius: 60rpx;
+    border: 2rpx solid #DDD;
+    background-color: #F4F5F6;
+    display: flex;
+    align-items: center;
+    margin-left: 30rpx;
+    margin-top: 10rpx;
+    float: left;
+}
+
+.expert-searchBar-operate-img{
+    width: 44rpx;
+    height: 44rpx;
+    margin-left: 20rpx;
+}
+
+.expert-searchBar-operate-input{
+    flex: 1;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 30rpx;
+    color: #999;
+    margin-left: 20rpx;
+}
+
+.expert-searchBar-close{
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 36rpx;
+    color: #898989;
+    margin-left: 30rpx;
+    float: left;
+}

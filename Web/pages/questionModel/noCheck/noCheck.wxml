@@ -1,0 +1,18 @@
+<!--pages/questionModel/noCheck/noCheck.wxml-->
+<view class='qmnc'>
+  <view class='qmnc-title'>
+    <view class='qmnc-title-line'></view>
+    <view class='qmnc-title-text'>未过审原因：</view>
+    <view class='qmnc-title-reason'>{{questionApplyRefuseReason}}</view>
+    <button open-type="contact" class='qmnc-title-btn' bindtap='complain'>申诉</button>
+  </view>
+  <form bindsubmit="submit">
+    <input type='text' placeholder-class="phcolor" name="questionTitle" class='qmnc-input' placeholder='示例：月薪1完～1.5万应该怎么理财？' value='{{submitParam.questionTitle}}' maxlength='50'></input>
+
+    <view class='qmnc-t'>问题描述</view>
+
+    <textarea class='qmnc-textarea' placeholder-class="phcolor" name="questionDetail" value='{{submitParam.questionDetail}}' maxlength='500' placeholder='示例：本人一个月平均消费我饿1000，目前无房贷、车贷。刚结婚，目前两年内没有打算要孩子，在乡下有房子，每月支出4500给家庭补贴，本人365天无聚会，剩余的钱要怎么安排，不想存银行。'></textarea>
+
+    <button class='qmnc-btn'  form-type="submit">提交</button>
+  </form>
+</view>

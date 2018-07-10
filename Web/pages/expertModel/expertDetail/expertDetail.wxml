@@ -1,0 +1,37 @@
+<!--pages/expertModel/expertDetail/expertDetail.wxml-->
+<view class='ed'>
+  <view class='ed-header'>
+    <view class='ed-header-img-box'>
+        <image src='{{expertDetail.expertPhoto}}' class='ed-header-img'></image>
+        <image wx:if='{{expertDetail.isCollectExpert == 1}}' src='../../../icons/suc.png' class='ed-header-suc'></image>
+    </view>
+    <view class='ed-header-name'>{{expertDetail.nickName}}</view>
+    <view class='ed-header-rank'>{{expertDetail.expertCompany}} | {{expertDetail.expertPost}}</view>
+    <view class='ed-header-btn-box'>
+      <view bindtap="collectExpert" wx:if='{{expertDetail.isCollectExpert == 0}}' class='ed-header-btn'>关注</view>
+      <view hover-class='none' class='ed-header-btn' bindtap='addQuestion'>提问</view>
+    </view>
+    <view class='ed-header-content-title'>专家简介</view>
+    <view class='ed-header-content'>{{expertDetail.expertDetail}}</view>
+  </view>
+
+  <view class='ed-content-title'>热门回答{{hostQuestionList.length}}条</view>
+
+  <view class='ed-content'>
+    <view hover-class='none' class='ed-content-item'>
+      <block wx:for='{{hostQuestionList}}' wx:key='index' wx:item='item'>
+          <view data-question_id='{{item.questionId}}' bindtap='goQuestionDetail' class='ed-content-item-body'>
+            <view class='ed-content-item-body-title'>{{item.questionTitle}}</view>
+            <view class='ed-content-item-body-text'>{{item.questionReasonText}}</view>
+          </view>
+          <view class='ed-content-item-footer'>
+            <view class='ed-content-item-footer-time'>{{item.questionReasonTimeInterval}}</view>
+            <view class='ed-content-item-footer-agree-read'>
+              <text>{{item.questionLikeNum}}赞同 · </text>
+              <text>{{item.questionReadNum}}阅读</text>
+            </view>
+          </view>
+      </block>
+    </view>
+  </view>
+</view>

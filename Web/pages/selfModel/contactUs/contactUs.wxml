@@ -1,0 +1,17 @@
+<!--pages/selfModel/contactUs/contactUs.wxml-->
+<view class='smcu'>
+    <view class='smcu-item'>
+        <image src='../../../icons/common_icon_e-mail@2x.png' class='smcu-item-img1'></image>
+        <view class='smcu-item-text'>邮箱：15247159211@163.com</view>
+    </view>
+
+    <view class='smcu-item'>
+        <image src='../../../icons/common_icon_tel@2x.png' class='smcu-item-img2'></image>
+        <view class='smcu-item-text'>电话：<text data-id='010-57756000' bindtap='callUp'>010-57756000</text> <text data-id='4008-980-648' bindtap='callUp'>4008-980-648</text></view>
+    </view>
+
+    <view class='smcu-item'>
+        <image src='../../../icons/common_icon_add@2x.png' class='smcu-item-img3'></image>
+        <view class='smcu-item-text' data-lat='39.9046900000' data-lng='116.4071700000' data-name='北京市朝阳区创立方自空间B4' bindtap='openMap'>地址：北京市朝阳区创立方自空间B4</view>
+    </view>
+</view>

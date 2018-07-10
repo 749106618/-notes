@@ -1,0 +1,26 @@
+/* pages/selfModel/fans/fans.wxss */
+.smf{
+    width: 100%;
+}
+
+.smf-item{
+    width: 100%;
+    height: 100rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 2rpx;
+    background-color: #FFF;
+}
+
+.smf-item-pic{
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 60rpx;
+    margin: 0 20rpx 0 30rpx;
+}
+
+.smf-item-name{
+    font-size: 30rpx;
+    color: #111;
+}

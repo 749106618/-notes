@@ -1,0 +1,43 @@
+/* pages/selfModel/contactUs/contactUs.wxss */
+.smcu{
+    width: 100%;
+}
+
+.smcu-item{
+    width: 100%;
+    height: 120rpx;
+    margin-bottom: 2rpx;
+    background-color: #FFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.smcu-item-img1{
+    width: 38rpx;
+    height: 30rpx;
+    margin: 0 40rpx;
+}
+
+.smcu-item-img2{
+    width: 38rpx;
+    height: 38rpx;
+    margin: 0 40rpx;
+}
+
+.smcu-item-img3{
+    width: 32rpx;
+    height: 44rpx;
+    margin: 0 43rpx;
+}
+
+.smcu-item-text{
+    flex: 1;
+    font-size: 30rpx;
+    color: #111;
+    letter-spacing: -0.44px;
+}
+
+.smcu-item-text text{
+    margin-right: 40rpx;
+}

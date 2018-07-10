@@ -1,0 +1,8 @@
+{
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "专家",
+    "backgroundColor": "#EFEFEF",
+    "usingComponents": {
+        "tabBar": "/components/tabBar/tabBar"
+    }
+}

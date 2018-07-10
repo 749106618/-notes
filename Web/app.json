@@ -1,0 +1,63 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/indexModel/search/search",
+        "pages/expert/expert",
+        "pages/expertModel/expertDetail/expertDetail",
+
+        "pages/question/question",
+        "pages/questionModel/detail/detail",
+        "pages/questionModel/noCheck/noCheck",
+        "pages/questionModel/answer/answer",
+        "pages/questionModel/commentDetail/commentDetail",
+        "pages/questionModel/quiz/quiz",
+
+        "pages/self/self",
+        "pages/selfModel/fans/fans",
+        "pages/selfModel/feedBack/feedBack",
+        "pages/selfModel/contactUs/contactUs",
+        "pages/selfModel/proveInfo/proveInfo",
+        "pages/selfModel/myQuestions/myQuestions",
+        "pages/selfModel/problemCollect/problemCollect",
+        "pages/selfModel/expertAttention/expertAttention",
+        "pages/selfModel/myReason/myReason",
+        "pages/selfModel/applyExpert/applyExpert"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#4B89F3",
+        "navigationBarTitleText": "WeChat",
+        "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/question/question",
+                "text": "答主",
+                "iconPath": "icons/icon-dazhu-n@2x.png",
+                "selectedIconPath": "icons/icon-dazhu-s@2x.png"
+            },
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "icons/common_tab_home_n@2x.png",
+                "selectedIconPath": "icons/common_tab_home_s@2x.png"
+            },
+            {
+                "pagePath": "pages/expert/expert",
+                "text": "专家",
+                "iconPath": "icons/common_tab_icon-n@2x.png",
+                "selectedIconPath": "icons/common_tab_icon-s@2x.png"
+            },
+            {
+                "pagePath": "pages/self/self",
+                "text": "我的",
+                "iconPath": "icons/common_tab_user_n@2x.png",
+                "selectedIconPath": "icons/common_tab_user_s@2x.png"
+            }
+        ],
+        "color": "#A1A1A1",
+        "selectedColor": "#4B89F3",
+        "borderStyle": "white",
+        "backgroundColor": "#FFF"
+    }
+}

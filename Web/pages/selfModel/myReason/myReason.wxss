@@ -1,0 +1,96 @@
+/* pages/selfModel/problemCollect/problemCollect.wxss */
+.smpc{
+    width: 100%;
+}
+
+.i-content-item{
+    width: 100%;
+    margin-bottom: 4rpx;
+}
+.i-container :last-child {
+    margin-bottom: 0;
+}
+
+.i-content-item-top{
+    width: 92%;
+    height: 90rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.i-content-item-top-img{
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 60rpx;
+    margin-right: 20rpx;
+}
+
+.i-content-item-top-name{
+    font-size: 30rpx;
+    color: #111;
+    margin-right: 20rpx;
+}
+
+.i-content-item-top-rank{
+    flex: 1;
+    font-size: 22rpx;
+    color: #838383;
+}
+
+.i-content-item-top-looked{
+    font-size: 28rpx;
+    color: #999;
+}
+
+.i-content-item-top-look{
+    display: flex;
+    font-size: 28rpx;
+    color: #4B89F3;
+    align-items: center;
+}
+
+.i-content-item-top-look-img{
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 14rpx;
+}
+
+.i-content-item-body{
+    width: 92%;
+    padding: 10rpx 4%;
+    background-color: #F8F8F8;
+}
+
+.i-content-item-body-title{
+    font-size: 30rpx;
+    color: #111;
+    line-height: 1.4;
+    font-weight: bold;
+}
+
+.i-content-item-body-text{
+    font-size: 28rpx;
+    color: #4C4C4C;
+    line-height: 1.3;
+}
+
+.i-content-item-footer{
+    width: 92%;
+    padding: 27rpx 4% 33rpx 4%;
+    height: 30rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F8F8F8;
+}
+
+.i-content-item-footer-time, .i-content-item-footer-agree-read{
+    font-size: 22rpx;
+    color: #8E8E93;
+}
+
+.i-content-item-footer-agree-read text{
+    margin-left: 10rpx;
+}

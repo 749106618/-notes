@@ -1,0 +1,108 @@
+<!--pages/questionModel/detail/detail.wxml-->
+<view class='qd'>
+    <view class="comment-content">
+        <view class='qd-title'>{{questionDetail.questionTitle}}</view>
+        <view class='qd-expert'>
+            <view class='qd-expert-top'>
+                <image src='{{questionDetail.expertPhoto}}' class='qd-expert-top-img'></image>
+                <view class='qd-expert-top-info'>
+                    <view class='qd-expert-top-name'>{{questionDetail.expertName}}</view>
+                    <view class='qd-expert-top-rank'>{{questionDetail.expertPost}}</view>
+                </view>
+                <block wx:if='{{questionDetail.isCollectExpert == 1}}'>
+                    <view class='qd-expert-top-looked'>已关注</view>
+                </block>
+                <block wx:else>
+                    <view class='qd-expert-top-look' data-expert_id='{{questionDetail.expertId}}' bindtap='expertCollect'>
+                        <image src='../../../icons/home_icon_attention@2x.png' class='qd-expert-top-look-img'></image>
+                        关注
+                    </view>
+                </block>
+            </view>
+            <view>
+                <block wx:for="{{questionDetail.questionReasonArray}}" wx:key='index' wx:item='item'>
+                    <view wx:if="{{item.text}}" class="qd-question-detail-text">{{item.text}}</view>
+                    <image src="{{item.image}}" wx:if="{{item.image}}" bindtap='previewImage' data-image_url="{{item.image}}" mode="widthFix" class="qd-question-detail-image"></image>
+                </block>
+            </view>
+            <view class='qd-expert-bottom'>
+                <view class='qd-expert-bottom-time'>{{questionDetail.questionCreateTime}}</view>
+                <view class='qd-expert-bottom-info'>
+                    <view class='qd-expert-bottom-praise'>{{questionDetail.questionLikeNum}}赞同 · </view>
+                    <view class='qd-expert-bottom-read'>{{questionDetail.questionReadNum}}阅读</view>
+                </view>
+            </view>
+            <view bindtap='addQuestion' class='qd-expert-btn'>提问</view>
+        </view>
+
+        <view class='qd-comment-title'>热门评论</view>
+
+        <view class='qd-comment-content'>
+            <block wx:for='{{commentData.rows}}' wx:key='index' wx:item='item'>
+                <view class='qd-item'>
+                    <image src='{{item.userPhoto}}' class='qd-item-img'></image>
+                    <view class='qd-item-info'>
+                        <view class='qd-item-info-top'>
+                            <view class='qd-item-info-name'>{{item.userName}}</view>
+                            <view data-comment_id='{{item.questionCommentId}}' bindtap='handelLikeComment' class='qd-item-info-praise {{item.isLike == 0 ? "" : "qd-item-info-praise-a"}}'>
+                                <image wx:if='{{item.isLike == 0}}' src='../../../icons/common_icon_like_n@2x.png' class='qd-item-info-praise-img'></image>
+                                <image wx:else src='../../../icons/common_icon_like_s@2x.png' class='qd-item-info-praise-img-a'></image>
+                                {{item.likeNum}}
+                            </view>
+                        </view>
+                        <view class='qd-item-info-middle'>{{item.content}}</view>
+                        <view class='qd-item-info-bottom'>
+                            <view class='qd-item-info-time'>{{item.commentTimeCompute}}</view>
+                            <view class='qd-item-info-answer' data-comment_id='{{item.questionCommentId}}' bindtap='goCommentDetail'>{{item.replyNum}}回复</view>
+                        </view>
+                    </view>
+                </view>
+            </block> 
+
+            <!-- no data -->
+            <view wx:if='{{commentData.records == 0}}' class='no-data-detail'>
+                <image src='../../../icons/icon-xiaoxi@2x.png'></image>
+            </view>
+        </view>
+        <view class='loading {{loading ? "show" : "hide"}}'>
+            <view class='loading-box'>
+                <view></view>
+                <view></view>
+                <view></view>
+            </view>
+        </view>
+    </view>
+
+    <view class='qd-operate'>
+        <view class='qd-operate-comment'>
+            <image src='../../../icons/common_icon_input_n@2x.png' class='qd-operate-comment-img'></image>
+            <input type='text' placeholder-class="phcolor" cursor-spacing='10' placeholder='写评论' class='qd-operate-comment-input' value='{{commentValue}}' confirm-type='发送' bindconfirm='sendComment'></input>
+        </view>
+
+        <block>
+            <view class='praise-box' bindtap='handelFollowQuestion'>
+                <image wx:if='{{questionDetail.isFollowQuestion == 0}}' src='../../../icons/icon1_n@2x.png' class='qd-operate-collect'></image>
+                <image wx:else src='../../../icons/icon1-s@2x.png' class='qd-operate-collect'></image>
+                <view class='qd-operate-text'>收藏</view>
+            </view>
+        </block>
+
+        <block>
+            <view class="praise-box" bindtap='handelLikeQuestion'>
+                <view wx:if='{{questionDetail.questionLikeNum != 0}}' class="pop-num">{{questionDetail.questionLikeNum}}</view>
+                <image wx:if='{{questionDetail.isLikeQuestion == 0}}' src='../../../icons/icon2-n@2x.png' class='qd-operate-praise'></image>
+                <image wx:else src='../../../icons/icon2_s@2x.png' class='qd-operate-praise'></image>
+                <view class='qd-operate-text'>点赞</view>
+            </view>
+        </block>
+
+        <block>
+            <view class="praise-box">
+                <button open-type='share' class='qd-operate-share-btn'>
+                    <image src='../../../icons/share@2x.png' class='qd-operate-share'></image>
+                </button>
+                <view class='qd-operate-text'>分享</view>
+            </view>
+        </block>
+    </view>
+</view>
